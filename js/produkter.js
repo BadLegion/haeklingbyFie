@@ -17,7 +17,7 @@ const PRODUCTS = [
     id: 4,
     title: "Rangler",
     desc: "Håndlavet rangler i 100 % bomuld med et blødt og dejligt greb. Perfekt som gave til de mindste og fremstillet med omhu i hvert eneste led.",
-    category: "tilbehoer",
+    category: "baby",
     price: 175,
     image: "images/products/rangler.jpg",
     stripeLink: "#",
@@ -44,7 +44,8 @@ const YARN_COLORS = [
 const CATEGORY_LABELS = {
   bamser:    "Bamser",
   toej:      "Tøj",
-  tilbehoer: "Accessories"
+  tilbehoer: "Accessories",
+  baby:      "Baby"
 };
 
 function formatCategory(cat) {
