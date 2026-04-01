@@ -86,21 +86,36 @@ function renderCartItems() {
 
   const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 
+  // Byg oversigt til Stripe (sendes som client_reference_id)
+  const orderSummary = cart.map(i =>
+    `${i.qty}x ${i.title}${i.color ? ' ('+i.color+')' : ''}`
+  ).join(', ');
+
+  // STRIPE PAYMENT LINK — indsæt dit link her når du har oprettet det i Stripe Dashboard
+  const STRIPE_LINK = 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER';
+  const checkoutUrl = STRIPE_LINK !== 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER'
+    ? STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(orderSummary)
+    : '#';
+
   footer.innerHTML = `
     <div class="cart-total">
       <span>Total</span>
       <span>${total} kr.</span>
     </div>
-    <div class="cart-checkout">
-      ${cart.map(item => `
-        <a href="${item.stripeLink === '#' ? '#' : item.stripeLink + (item.color ? '?client_reference_id=' + encodeURIComponent(item.color) : '')}"
-           class="btn btn--primary btn--sm cart-checkout__btn"
-           target="_blank" rel="noopener noreferrer">
-          Køb: ${item.title}${item.color ? ' (' + item.color + ')' : ''}
-        </a>
+    <div class="cart-order-summary">
+      ${cart.map(i => `
+        <div class="cart-order-line">
+          <span>${i.title}${i.color ? ' <em>(${i.color})</em>' : ''} × ${i.qty}</span>
+          <span>${i.price * i.qty} kr.</span>
+        </div>
       `).join('')}
     </div>
-    <p class="cart-checkout__hint">Hvert produkt betales separat via sikker Stripe-betaling</p>
+    <a href="${checkoutUrl}"
+       class="btn btn--primary btn--lg cart-checkout__btn"
+       ${checkoutUrl !== '#' ? 'target="_blank" rel="noopener noreferrer"' : 'onclick="alert(\'Stripe Payment Link er endnu ikke opsat — se vejledningen i koden.\'); return false;"'}>
+      Gå til betaling →
+    </a>
+    <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
   `;
 }
 

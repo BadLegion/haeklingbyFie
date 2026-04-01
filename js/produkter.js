@@ -80,7 +80,6 @@ function openProductModal(product) {
   price.textContent = product.price + ' kr.';
   desc.textContent  = product.desc;
   badge.textContent = CATEGORY_LABELS[product.category] || product.category;
-  buyBtn.href       = product.stripeLink;
   colorLabel.textContent = 'Ingen farve valgt endnu';
 
   // Byg farve-swatches
@@ -104,12 +103,10 @@ function openProductModal(product) {
       btn.classList.add('active');
       selectedColor = btn.dataset.name;
       colorLabel.textContent = 'Valgt farve: ' + selectedColor;
-      const baseLink = product.stripeLink || '#';
-      buyBtn.href = baseLink === '#' ? '#' : baseLink + '?client_reference_id=' + encodeURIComponent(selectedColor);
     });
   });
 
-  // Tilføj til kurv-knap i modal
+  // "Læg i kurv"-knap i modal
   const modalAddBtn = document.getElementById('modal-add-btn');
   if (modalAddBtn) {
     modalAddBtn.onclick = () => {

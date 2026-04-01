@@ -1146,10 +1146,19 @@ input[type="range"] {
   border-bottom: 1px solid var(--color-border);
 }
 
-.cart-checkout {
+.cart-order-summary {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-order-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
 }
 
 .cart-checkout__btn {
