@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Privatlivspolitik for HæklingByFie — læs om hvordan vi håndterer dine personoplysninger.">
 
-  <!-- GDPR: Indsæt dit Cookiebot account ID nedenfor -->
+  <!--
+    ══════════════════════════════════════════════════════
+    COOKIEBOT OPSÆTNING (3 trin):
+    1. Gå til cookiebot.com og opret en gratis konto
+    2. Tilføj din hjemmeside-URL og kopiér dit unikke CBID
+    3. Erstat DIN-COOKIEBOT-ID nedenfor med dit CBID
+       og fjern kommentarerne (<!-- og -->)
+    ══════════════════════════════════════════════════════
+  -->
   <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
     data-cbid="DIN-COOKIEBOT-ID" data-blockingmode="auto" async></script> -->
 
@@ -126,66 +134,164 @@
 
           <p class="policy-date">Sidst opdateret: 1. april 2026</p>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 1. DATAANSVARLIG                              -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>1. Dataansvarlig</h2>
           <p>
             HæklingByFie er dataansvarlig for behandlingen af de personoplysninger,
-            vi modtager fra dig via vores hjemmeside og kontaktformular.<br><br>
+            vi modtager fra dig via vores hjemmeside, kontaktformular og betalingsløsning.<br><br>
             <strong>Virksomhed:</strong> HæklingByFie<br>
             <strong>E-mail:</strong> <a href="mailto:hej@haeklingbyfie.dk">hej@haeklingbyfie.dk</a>
           </p>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 2. HVILKE OPLYSNINGER INDSAMLER VI?           -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>2. Hvilke oplysninger indsamler vi?</h2>
-          <p>Vi kan indsamle følgende oplysninger, når du kontakter os:</p>
+
+          <p><strong>Via kontaktformularen (Specialbestilling):</strong></p>
           <ul>
             <li>Navn</li>
             <li>E-mailadresse</li>
-            <li>Beskeder og forespørgsler du sender os</li>
-            <li>Eventuelle billeder du uploader til en forespørgsel</li>
+            <li>Beskrivelse af dit ønske</li>
+            <li>Eventuelle inspirationsbilleder du uploader</li>
+          </ul>
+
+          <p><strong>Via betalingsløsningen (Stripe):</strong></p>
+          <ul>
+            <li>Navn</li>
+            <li>Leveringsadresse (vej, postnummer, by, land)</li>
+            <li>E-mailadresse</li>
+            <li>Telefonnummer (til pakkelevering)</li>
+            <li>Betalingsoplysninger (kortnummer m.v. — behandles udelukkende af Stripe)</li>
           </ul>
           <p>
-            Vi indsamler <strong>ikke</strong> betalingsoplysninger direkte på denne hjemmeside.
-            Al betaling håndteres sikkert via Stripe, som er underlagt egne privatlivspolitikker.
+            Vi ser <strong>ikke</strong> dine betalingsoplysninger. De behandles direkte og sikkert af Stripe,
+            som er certificeret i henhold til PCI DSS niveau 1.
           </p>
 
+          <p><strong>Via cookies og teknisk logning:</strong></p>
+          <ul>
+            <li>Cookie-præferencer (via Cookiebot)</li>
+            <li>Kurv-indhold (gemmes lokalt i din browser via localStorage — forlader aldrig din enhed)</li>
+          </ul>
+
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 3. FORMÅL MED BEHANDLINGEN                    -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>3. Formål med behandlingen</h2>
-          <p>Vi behandler dine personoplysninger til følgende formål:</p>
           <ul>
             <li>At besvare dine forespørgsler og specialbestillinger</li>
-            <li>At kommunikere med dig om din ordre</li>
-            <li>At overholde vores juridiske forpligtelser</li>
+            <li>At gennemføre og bekræfte din ordre</li>
+            <li>At sende din ordre til dig via DAO (leveringsadresse)</li>
+            <li>At kommunikere med dig om din ordre og levering</li>
+            <li>At overholde vores juridiske og regnskabsmæssige forpligtelser</li>
           </ul>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 4. RETSGRUNDLAG                               -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>4. Retsgrundlag</h2>
           <p>
-            Vores behandling af dine personoplysninger sker på baggrund af dit
-            samtykke (GDPR artikel 6, stk. 1, litra a) og/eller for at opfylde
-            en aftale med dig (GDPR artikel 6, stk. 1, litra b).
-          </p>
-
-          <h2>5. Opbevaring</h2>
-          <p>
-            Vi opbevarer dine oplysninger så længe, det er nødvendigt for at
-            opfylde det formål, de blev indsamlet til — typisk indtil en ordre
-            er afsluttet og eventuelle tvister er løst. Herefter slettes oplysningerne.
-          </p>
-
-          <h2>6. Deling med tredjeparter</h2>
-          <p>
-            Vi deler ikke dine personoplysninger med tredjepart, med undtagelse af:
+            Vores behandling af dine personoplysninger sker på følgende grundlag:
           </p>
           <ul>
-            <li><strong>Formspree</strong> — til håndtering af kontaktformularen (se <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formsprees privatlivspolitik</a>)</li>
-            <li><strong>Stripe</strong> — til sikker betalingshåndtering (se <a href="https://stripe.com/en-dk/privacy" target="_blank" rel="noopener">Stripes privatlivspolitik</a>)</li>
-            <li>Offentlige myndigheder, hvis vi er lovmæssigt forpligtet hertil</li>
+            <li><strong>Opfyldelse af aftale</strong> (GDPR artikel 6, stk. 1, litra b) — når vi behandler din ordre og leveringsadresse</li>
+            <li><strong>Samtykke</strong> (GDPR artikel 6, stk. 1, litra a) — når du indsender en kontaktformular og giver samtykke hertil</li>
+            <li><strong>Retlig forpligtelse</strong> (GDPR artikel 6, stk. 1, litra c) — fx bogføringskrav</li>
           </ul>
 
-          <h2>7. Cookies</h2>
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 5. OPBEVARING                                 -->
+          <!-- ══════════════════════════════════════════════ -->
+          <h2>5. Opbevaring</h2>
           <p>
-            Denne hjemmeside kan anvende cookies til at forbedre brugeroplevelsen.
-            Vi bruger Cookiebot til at indhente dit samtykke, inden ikke-nødvendige
-            cookies sættes. Du kan til enhver tid trække dit samtykke tilbage.
+            Vi opbevarer dine oplysninger så længe, det er nødvendigt for at opfylde det formål,
+            de blev indsamlet til:
+          </p>
+          <ul>
+            <li><strong>Kontaktformularer:</strong> slettes, når forespørgslen er håndteret og eventuelle tvister er løst</li>
+            <li><strong>Ordreoplysninger og leveringsadresse:</strong> opbevares i op til 5 år af hensyn til bogføringsloven</li>
+            <li><strong>Kurv-data (localStorage):</strong> gemmes kun i din browser og slettes automatisk, når du rydder din browserhistorik</li>
+          </ul>
+
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 6. DELING MED TREDJEPARTER                    -->
+          <!-- ══════════════════════════════════════════════ -->
+          <h2>6. Deling med tredjeparter</h2>
+          <p>
+            Vi deler kun dine personoplysninger med tredjeparter, når det er nødvendigt:
+          </p>
+          <ul>
+            <li>
+              <strong>Formspree</strong> — modtager indholdet af kontaktformularen (navn, e-mail, besked, billede).
+              Se <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">Formsprees privatlivspolitik</a>.
+            </li>
+            <li>
+              <strong>Stripe</strong> — behandler betaling og indsamler leveringsadresse til ordregennemførelse.
+              Se <a href="https://stripe.com/en-dk/privacy" target="_blank" rel="noopener">Stripes privatlivspolitik</a>.
+            </li>
+            <li>
+              <strong>DAO (Distribueret Avis Omdeling A/S)</strong> — modtager dit navn og din leveringsadresse
+              for at kunne levere din ordre. Se <a href="https://www.dao.as/privatlivspolitik" target="_blank" rel="noopener">DAOs privatlivspolitik</a>.
+            </li>
+            <li>
+              <strong>Offentlige myndigheder</strong> — hvis vi er lovmæssigt forpligtet hertil (fx Skat, politi).
+            </li>
+          </ul>
+          <p>
+            Vi sælger eller udlejer aldrig dine personoplysninger til tredjepart i markedsføringsøjemed.
           </p>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 7. COOKIES                                    -->
+          <!-- ══════════════════════════════════════════════ -->
+          <h2>7. Cookies og samtykkehåndtering</h2>
+
+          <p>
+            Denne hjemmeside bruger cookies og lignende teknologier. Vi anvender
+            <strong>Cookiebot</strong> til at indhente, registrere og håndtere dit samtykke, inden
+            ikke-nødvendige cookies sættes. Du kan til enhver tid ændre eller trække dit samtykke
+            tilbage ved at klikke på cookie-ikonet nederst på siden.
+          </p>
+
+          <p><strong>Vi anvender følgende typer cookies:</strong></p>
+          <ul>
+            <li>
+              <strong>Nødvendige cookies</strong> — teknisk nødvendige for at hjemmesiden fungerer korrekt
+              (fx session-cookies). Kræver ikke samtykke.
+            </li>
+            <li>
+              <strong>Funktionelle cookies</strong> — husker dine præferencer, fx sprogvalg.
+              Sættes kun med dit samtykke.
+            </li>
+            <li>
+              <strong>Statistik-cookies</strong> — bruges til at forstå, hvordan besøgende bruger siden
+              (fx sidevisninger). Sættes kun med dit samtykke.
+            </li>
+            <li>
+              <strong>Marketing-cookies</strong> — bruges til at vise relevante annoncer.
+              Vi anvender ikke marketingcookies på nuværende tidspunkt.
+            </li>
+          </ul>
+
+          <p>
+            <strong>localStorage (kurv-data):</strong> Din indkøbskurv gemmes i din browsers localStorage.
+            Dette er ikke en cookie og forlader aldrig din enhed. Dataene slettes, når du rydder
+            din browserhistorik, eller når du selv tømmer kurven.
+          </p>
+
+          <p>
+            Du kan læse mere om cookies og dine rettigheder på
+            <a href="https://www.cookiebot.com/da/cookie-declaration/" target="_blank" rel="noopener">Cookiebots hjemmeside</a>
+            og på
+            <a href="https://www.forbrug.dk/raad-og-regler/digitalt/cookies/" target="_blank" rel="noopener">Forbruger Europa</a>.
+          </p>
+
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 8. DINE RETTIGHEDER                           -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>8. Dine rettigheder</h2>
           <p>Du har følgende rettigheder i henhold til GDPR:</p>
           <ul>
@@ -193,27 +299,43 @@
             <li><strong>Berigtigelse</strong> — ret til at få forkerte oplysninger rettet</li>
             <li><strong>Sletning</strong> — ret til at få dine oplysninger slettet ("retten til at blive glemt")</li>
             <li><strong>Begrænsning</strong> — ret til at begrænse behandlingen af dine oplysninger</li>
-            <li><strong>Dataportabilitet</strong> — ret til at modtage dine oplysninger i et struktureret format</li>
+            <li><strong>Dataportabilitet</strong> — ret til at modtage dine oplysninger i et struktureret, maskinlæsbart format</li>
             <li><strong>Indsigelse</strong> — ret til at gøre indsigelse mod behandlingen</li>
+            <li><strong>Tilbagekaldelse af samtykke</strong> — du kan til enhver tid trække dit samtykke tilbage uden at det berører lovligheden af behandlingen inden tilbagekaldelsen</li>
           </ul>
           <p>
             For at udøve dine rettigheder kan du kontakte os på
             <a href="mailto:hej@haeklingbyfie.dk">hej@haeklingbyfie.dk</a>.
+            Vi besvarer din henvendelse inden for 30 dage.
           </p>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 9. KLAGE TIL DATATILSYNET                     -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>9. Klage til Datatilsynet</h2>
           <p>
             Hvis du er utilfreds med vores behandling af dine personoplysninger,
             har du ret til at indgive en klage til
-            <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">Datatilsynet</a>
-            (datatilsynet.dk).
+            <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">Datatilsynet</a>.
+          </p>
+          <p>
+            <strong>Datatilsynet</strong><br>
+            Carl Jacobsens Vej 35<br>
+            2500 Valby<br>
+            Tlf.: 33 19 32 00<br>
+            <a href="mailto:dt@datatilsynet.dk">dt@datatilsynet.dk</a>
           </p>
 
+          <!-- ══════════════════════════════════════════════ -->
+          <!-- 10. ÆNDRINGER I PRIVATLIVSPOLITIKKEN          -->
+          <!-- ══════════════════════════════════════════════ -->
           <h2>10. Ændringer i privatlivspolitikken</h2>
           <p>
-            Vi forbeholder os ret til at opdatere denne privatlivspolitik.
-            Den seneste version vil altid være tilgængelig på denne side med datoen
-            for seneste opdatering angivet øverst.
+            Vi forbeholder os ret til at opdatere denne privatlivspolitik, fx ved ændringer i
+            lovgivningen eller vores behandling af personoplysninger. Den seneste version vil
+            altid være tilgængelig på denne side med datoen for seneste opdatering angivet øverst.
+            Ved væsentlige ændringer vil vi orientere dig pr. e-mail, hvis vi har dine
+            kontaktoplysninger.
           </p>
 
         </div>

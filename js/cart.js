@@ -116,6 +116,7 @@ function renderCartItems() {
       Gå til betaling →
     </a>
     <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
+    <p class="cart-checkout__hint" style="margin-top:var(--space-1);">📦 Din leveringsadresse angives på næste side</p>
   `;
 }
 
