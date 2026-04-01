@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HæklingByFie — håndlavede bamser, babytøj og tilbehør med kærlighed. Specialbestillinger modtages.">
+
+  <!-- GDPR: Indsæt dit Cookiebot account ID nedenfor -->
+  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+    data-cbid="DIN-COOKIEBOT-ID" data-blockingmode="auto" async></script> -->
+
+  <title>HæklingByFie — Håndlavede produkter med kærlighed</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Fonte (Google Fonts CDN — skift til selvhostede efter GDPR-consent er sat op) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Hero ---- */
+    .hero {
+      background-color: var(--color-surface);
+      padding: var(--space-24) 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, var(--color-rose-light) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(143,175,138,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: var(--space-16);
+    }
+
+    .hero__content {}
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-sage-dark);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--color-sage-dark);
+    }
+
+    .hero__lead {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+      max-width: 480px;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .hero__image-wrap {
+      position: relative;
+    }
+
+    /* Carousel */
+    .hero__carousel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/5;
+    }
+
+    .hero__carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hero__slide {
+      flex: 0 0 100%;
+      border: none;
+      padding: 0;
+      background: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      pointer-events: none;
+    }
+
+    .hero__slide:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero__slide-hint {
+      position: absolute;
+      bottom: var(--space-6);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: rgba(255,255,255,0.92);
+      color: var(--color-text);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      letter-spacing: 0.04em;
+    }
+
+    .hero__slide:hover .hero__slide-hint {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .hero__carousel-prev,
+    .hero__carousel-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(4px);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text);
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero__carousel-prev:hover,
+    .hero__carousel-next:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .hero__carousel-prev { left: var(--space-3); }
+    .hero__carousel-next { right: var(--space-3); }
+
+    .hero__carousel-dots {
+      position: absolute;
+      bottom: var(--space-4);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: var(--space-2);
+      z-index: 2;
+    }
+
+    .hero__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .hero__dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    .hero__badge {
+      position: absolute;
+      bottom: var(--space-6);
+      left: -var(--space-8);
+      background-color: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .hero__badge-icon {
+      font-size: 1.5rem;
+    }
+
+    .hero__badge-text span {
+      display: block;
+      font-weight: 400;
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    @media (max-width: 900px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero__lead { margin-inline: auto; }
+      .hero__actions { justify-content: center; }
+      .hero__image-wrap { max-width: 480px; margin-inline: auto; }
+      .hero__carousel { aspect-ratio: 3/2; }
+      /* Hint altid synlig på touch */
+      .hero__slide-hint {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: var(--space-12) 0; }
+      .hero__carousel { aspect-ratio: 4/3; }
+      .hero__badge { display: none; }
+      .hero__carousel-prev, .hero__carousel-next { width: 32px; height: 32px; font-size: 1.1rem; }
+    }
+
+    /* ---- Features strip ---- */
+    .features {
+      background-color: var(--color-white);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-8) 0;
+    }
+
+    .features__list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-8) var(--space-16);
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text-muted);
+    }
+
+    .feature__icon { font-size: 1.25rem; }
+
+    /* ---- Featured products ---- */
+    .featured-products { background-color: var(--color-bg); }
+
+    .featured-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--space-8);
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    /* ---- Specialbestilling banner ---- */
+    .custom-banner {
+      background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-sage-dark) 100%);
+      border-radius: var(--radius-lg);
+      padding: var(--space-12) var(--space-8);
+      text-align: center;
+      color: var(--color-white);
+      margin: var(--space-16) 0;
+    }
+
+    .custom-banner__icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
+
+    .custom-banner h2 {
+      color: var(--color-white);
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .custom-banner p {
+      color: rgba(255,255,255,0.85);
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-8);
+      max-width: 520px;
+      margin-inline: auto;
+      margin-bottom: var(--space-8);
+    }
+
+    .btn--white {
+      background-color: var(--color-white);
+      color: var(--color-sage-dark);
+      border-color: var(--color-white);
+    }
+    .btn--white:hover {
+      background-color: var(--color-surface);
+      transform: translateY(-2px);
+    }
+
+    /* ---- Reviews section ---- */
+    .reviews { background-color: var(--color-surface); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hovednavigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
+        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+      </a>
+      <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="specialbestilling.html">Specialbestilling</a></li>
+        <li><a href="om-mig.html">Om mig</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Velkommen til HæklingByFie">
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <span class="hero__eyebrow">🧶 Lavet med kærlighed</span>
+          <h1 class="hero__title">
+            Unikke ting<br>
+            hæklet <em>til dig</em>
+          </h1>
+          <p class="hero__lead">
+            Velkommen til HæklingByFie, her finder du et udvalg af håndlavede hæklerier til både store og små, alt sammen skabt med omhu og kvalitet.
+          </p>
+          <div class="hero__actions">
+            <a href="produkter.html" class="btn btn--primary btn--lg">Se alle produkter</a>
+            <a href="specialbestilling.html" class="btn btn--outline btn--lg">Specialbestilling</a>
+          </div>
+        </div>
+        <div class="hero__image-wrap">
+          <div class="hero__carousel">
+            <div class="hero__carousel-track" id="carousel-track">
+              <button class="hero__slide" data-product-id="3" aria-label="Se Clutch-pung">
+                <img src="images/products/clutch-pung.jpg" alt="Clutch-pung med trækugle">
+                <span class="hero__slide-hint">Tryk for at se produkt</span>
+              </button>
+              <button class="hero__slide" data-product-id="5" aria-label="Se Lynlåspung">
+                <img src="images/products/lynlaaspung.jpg" alt="Lynlåspung i mohair">
+                <span class="hero__slide-hint">Tryk for at se produkt</span>
+              </button>
+            </div>
+            <button class="hero__carousel-prev" id="carousel-prev" aria-label="Forrige billede">&#8249;</button>
+            <button class="hero__carousel-next" id="carousel-next" aria-label="Næste billede">&#8250;</button>
+            <div class="hero__carousel-dots" id="carousel-dots"></div>
+          </div>
+          <div class="hero__badge">
+            <span class="hero__badge-icon">🤍</span>
+            <div class="hero__badge-text">
+              Håndlavet<span>100% med kærlighed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <section class="features" aria-label="Fordele">
+      <div class="container">
+        <ul class="features__list" role="list">
+          <li class="feature"><span class="feature__icon">🧶</span> 100% håndlavede produkter</li>
+          <li class="feature"><span class="feature__icon">🌿</span> Bæredygtige materialer</li>
+          <li class="feature"><span class="feature__icon">✉️</span> Specialbestillinger modtages</li>
+          <li class="feature"><span class="feature__icon">📦</span> Levering i hele Danmark</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- UDVALGTE PRODUKTER -->
+    <section class="featured-products py-section" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="featured-header">
+          <div>
+            <span class="section-label">Udvalgte produkter</span>
+            <h2 id="featured-heading" class="section-title">Populære favoritter</h2>
+          </div>
+          <a href="produkter.html" class="btn btn--outline">Se alle produkter</a>
+        </div>
+
+        <!-- Udfyldes automatisk af produkter.js -->
+        <div id="featured-grid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- SPECIALBESTILLING BANNER -->
+    <section class="py-section" aria-label="Specialbestilling">
+      <div class="container">
+        <div class="custom-banner">
+          <div class="custom-banner__icon">🪡</div>
+          <h2>Drømmer du om noget helt unikt?</h2>
+          <p>
+            Send mig en besked og beskriv, hvad du ønsker. Jeg hækler gerne
+            efter dine farver, dit design eller en særlig anledning.
+          </p>
+          <a href="specialbestilling.html" class="btn btn--white btn--lg">Lav en specialbestilling</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANMELDELSER -->
+    <section class="reviews py-section" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="text-center mb-lg">
+          <span class="section-label">Kundeanmeldelser</span>
+          <h2 id="reviews-heading" class="section-title">Hvad siger kunderne?</h2>
+          <div class="divider"></div>
+          <p class="section-intro">Her er hvad nogle af mine glade kunder siger om deres oplevelse.</p>
+        </div>
+
+        <div class="reviews-grid">
+
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">
+              "Jeg er vild med min bjørnebamse! Den er så blød og kærlig at holde om.
+              Perfekt gave til min lillesøsters nyfødte."
+            </p>
+            <span class="review-card__author">— Mette, Aarhus</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">
+              "Bestilte en specialdesignet babytop med vores datters initialer.
+              Fie var super sød og lydhør. Resultatet er fantastisk!"
+            </p>
+            <span class="review-card__author">— Sofie & Lars, København</span>
+          </div>
+
+          <div class="review-card">
+            <div class="review-card__stars">★★★★★</div>
+            <p class="review-card__text">
+              "Hurtig levering og pakket så flot og omsorgsfuldt ind.
+              Kvaliteten er i topklasse — kan varmt anbefales!"
+            </p>
+            <span class="review-card__author">— Hanne, Odense</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
+        <p class="footer__tagline">Lavet med kærlighed — ét stikken ad gangen.</p>
+        <p class="footer__copy">&copy; 2026 HæklingByFie</p>
+      </div>
+      <nav class="footer__links" aria-label="Sidelinks">
+        <a href="produkter.html">Produkter</a>
+        <a href="specialbestilling.html">Specialbestilling</a>
+        <a href="om-mig.html">Om mig</a>
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- PRODUKT-MODAL -->
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="product-modal__backdrop" id="modal-backdrop"></div>
+    <div class="product-modal__panel">
+      <button class="product-modal__close" id="modal-close" aria-label="Luk">&#x2715;</button>
+      <div class="product-modal__layout">
+
+        <!-- Billede -->
+        <div class="product-modal__img-wrap">
+          <img id="modal-img" src="" alt="" class="product-modal__img">
+          <span class="card__badge" id="modal-badge"></span>
+        </div>
+
+        <!-- Info -->
+        <div class="product-modal__info">
+          <h2 class="product-modal__title" id="modal-title"></h2>
+          <p class="product-modal__price" id="modal-price"></p>
+          <p class="product-modal__desc" id="modal-desc"></p>
+
+          <!-- Farve-vælger -->
+          <div class="product-modal__color-section">
+            <p class="product-modal__color-heading">Ønsket farve</p>
+            <div class="product-modal__swatches" id="modal-swatches" role="group" aria-label="Vælg ønsket garnfarve"></div>
+            <p class="product-modal__color-label" id="modal-color-label">Ingen farve valgt endnu</p>
+          </div>
+
+          <!-- Køb -->
+          <a href="#" id="modal-buy-btn" class="btn btn--primary btn--lg product-modal__buy" target="_blank" rel="noopener noreferrer">
+            Køb nu
+          </a>
+          <p class="product-modal__buy-hint">Husk at angive din valgte farve i kommentarfeltet ved betaling</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/produkter.js"></script>
+  <script>
+    (function () {
+      const track = document.getElementById('carousel-track');
+      const dotsWrap = document.getElementById('carousel-dots');
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll('.hero__slide'));
+      let current = 0;
+      let timer;
+
+      /* Byg dots */
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero__dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Gå til billede ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      function goTo(index) {
+        dotsWrap.children[current].classList.remove('active');
+        current = (index + slides.length) % slides.length;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dotsWrap.children[current].classList.add('active');
+        resetTimer();
+      }
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 4500);
+      }
+
+      document.getElementById('carousel-prev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('carousel-next').addEventListener('click', () => goTo(current + 1));
+
+      /* Klik på slide åbner modal */
+      slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+          const id = parseInt(slide.dataset.productId);
+          const product = PRODUCTS.find(p => p.id === id);
+          if (product) openProductModal(product);
+        });
+      });
+
+      resetTimer();
+    })();
+  </script>
+</body>
+</html>

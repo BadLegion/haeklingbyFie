@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mød Fie bag HæklingByFie — en lille hæklevirksomhed med stort hjerte, dedikeret til håndlavede produkter i høj kvalitet.">
+
+  <!-- GDPR: Indsæt dit Cookiebot account ID nedenfor -->
+  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+    data-cbid="DIN-COOKIEBOT-ID" data-blockingmode="auto" async></script> -->
+
+  <title>Om mig — HæklingByFie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Story section ---- */
+    .story {
+      padding-top: var(--space-16);
+      padding-bottom: var(--space-24);
+    }
+
+    .story__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+      margin-bottom: var(--space-24);
+    }
+
+    .story__grid--reverse {
+      direction: rtl;
+    }
+    .story__grid--reverse > * {
+      direction: ltr;
+    }
+
+    .story__image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 3/4;
+      background-color: var(--color-surface);
+    }
+
+    .story__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story__content {}
+
+    .story__quote {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-sage-dark);
+      line-height: 1.5;
+      margin-bottom: var(--space-6);
+      padding-left: var(--space-4);
+      border-left: 3px solid var(--color-rose);
+    }
+
+    .story__text {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-base);
+    }
+
+    /* ---- Values ---- */
+    .values {
+      background-color: var(--color-surface);
+      padding: var(--space-24) 0;
+    }
+
+    .values__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+
+    .value-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .value-card__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .value-card__title {
+      font-size: var(--text-base);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--color-text);
+    }
+
+    .value-card__text {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ---- CTA ---- */
+    .about-cta {
+      padding: var(--space-24) 0;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .story__grid,
+      .story__grid--reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+      .story__image {
+        aspect-ratio: 4/3;
+        max-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hovednavigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
+        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+      </a>
+      <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="specialbestilling.html">Specialbestilling</a></li>
+        <li><a href="om-mig.html">Om mig</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Om mig">
+      <div class="container">
+        <span class="section-label">Om mig</span>
+        <h1 class="page-hero__title">Mød Fie</h1>
+        <p class="page-hero__lead">
+          Bag hvert eneste produkt er der et menneske med passion for håndværk,
+          et hæklenål og masser af kærlighed.
+        </p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story">
+      <div class="container">
+
+        <!-- Del 1: Min historie -->
+        <div class="story__grid">
+          <div class="story__image">
+            <img
+              src="images/about/fie-portrait.jpg"
+              alt="Fie bag HæklingByFie"
+              loading="lazy"
+              onerror="this.style.background='#F2EDE6';"
+            >
+          </div>
+          <div class="story__content">
+            <span class="section-label">Min historie</span>
+            <h2 class="section-title">Sådan startede det hele</h2>
+            <div class="divider"></div>
+            <blockquote class="story__quote">
+              "Hækling er ikke bare et håndværk for mig —<br>det er en måde at give kærlighed på."
+            </blockquote>
+            <p class="story__text">
+              Hej! Jeg hedder Fie, og jeg hækler hvert eneste produkt med egne hænder
+              og fuldt hjerte. Det hele begyndte, da jeg som ung lærte at hækle af
+              min bedstemor i hendes lune stue. Det var der, kærligheden til håndværket
+              spirede.
+            </p>
+            <p class="story__text">
+              I dag er hækling ikke blot en hobby — det er mit kreative frirum og mit
+              lille erhverv. Jeg nyder at lave produkter, der holder, der er smukke,
+              og som betyder noget for modtageren. Uanset om det er en bamse til en
+              nyfødt eller et unikt tilbehør til hverdagen.
+            </p>
+          </div>
+        </div>
+
+        <div class="ornament">
+          <span class="ornament__icon">🧶</span>
+        </div>
+
+        <!-- Del 2: Mit håndværk -->
+        <div class="story__grid story__grid--reverse">
+          <div class="story__image">
+            <img
+              src="images/about/haandvaerk.jpg"
+              alt="Nærbillede af hæklede produkter"
+              loading="lazy"
+              onerror="this.style.background='#EDE8E0';"
+            >
+          </div>
+          <div class="story__content">
+            <span class="section-label">Mit håndværk</span>
+            <h2 class="section-title">Kvalitet i hvert stikken</h2>
+            <div class="divider"></div>
+            <p class="story__text">
+              Alle mine produkter hækles i bæredygtige og certificerede materialer —
+              primært 100% bomuld og merino-uld, som er skånsomt mod selv den mest
+              følsomme babyhud. Jeg går ikke på kompromis med kvaliteten.
+            </p>
+            <p class="story__text">
+              Hvert produkt er unikt. Selv om to bamser ligner hinanden, er de aldrig
+              identiske — og det er netop det smukke ved hækling. Du får noget, som
+              ingen andre har.
+            </p>
+            <p class="story__text">
+              Specialbestillinger er hjertet i min virksomhed. Jeg elsker at få en
+              idé fra en kunde og gøre den til virkelighed, ét stikken ad gangen.
+            </p>
+            <a href="specialbestilling.html" class="btn btn--outline mt-md">
+              Lav en specialbestilling
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VÆRDIER -->
+    <section class="values" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-label">Mine værdier</span>
+          <h2 id="values-heading" class="section-title">Det vigtigste for mig</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="values__grid">
+          <div class="value-card">
+            <div class="value-card__icon">🌿</div>
+            <h3 class="value-card__title">Bæredygtighed</h3>
+            <p class="value-card__text">Jeg bruger certificerede, naturlige materialer og bestiller kun det, jeg skal bruge — ingen spild.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__icon">🤍</div>
+            <h3 class="value-card__title">Kærlighed til håndværket</h3>
+            <p class="value-card__text">Hvert produkt laves med ro, nærvær og opmærksomhed. Ingen maskiner, ingen masseproduktion.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__icon">✨</div>
+            <h3 class="value-card__title">Unikhed</h3>
+            <p class="value-card__text">Alle produkter er ét-af-sin-slags. Du får noget særligt, der ikke kan købes i en butik.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-card__icon">💬</div>
+            <h3 class="value-card__title">Nærhed til kunden</h3>
+            <p class="value-card__text">Jeg er altid tilgængelig for spørgsmål og elsker at samarbejde om specialønsker.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="container container--narrow">
+        <span class="section-label">Klar til at bestille?</span>
+        <h2 class="section-title">Lad os skabe noget smukt sammen</h2>
+        <div class="divider"></div>
+        <p class="section-intro">
+          Kig i shoppen, eller send mig en besked om din idé.
+          Jeg glæder mig til at høre fra dig!
+        </p>
+        <div style="display:flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a href="produkter.html" class="btn btn--primary btn--lg">Se produkter</a>
+          <a href="specialbestilling.html" class="btn btn--outline btn--lg">Kontakt mig</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
+        <p class="footer__tagline">Lavet med kærlighed — ét stikken ad gangen.</p>
+        <p class="footer__copy">&copy; 2026 HæklingByFie</p>
+      </div>
+      <nav class="footer__links" aria-label="Sidelinks">
+        <a href="produkter.html">Produkter</a>
+        <a href="specialbestilling.html">Specialbestilling</a>
+        <a href="om-mig.html">Om mig</a>
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

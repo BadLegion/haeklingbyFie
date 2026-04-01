@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Se alle håndlavede produkter fra HæklingByFie — bamser, babytøj og tilbehør. Filtrer efter kategori og pris.">
+
+  <!-- GDPR: Indsæt dit Cookiebot account ID nedenfor -->
+  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+    data-cbid="DIN-COOKIEBOT-ID" data-blockingmode="auto" async></script> -->
+
+  <title>Produkter — HæklingByFie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .shop-layout {
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-24);
+    }
+
+    .shop-header {
+      margin-bottom: var(--space-8);
+    }
+
+    .results-count {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+    }
+
+    /* Stripe info box */
+    .stripe-info {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hovednavigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
+        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+      </a>
+      <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="specialbestilling.html">Specialbestilling</a></li>
+        <li><a href="om-mig.html">Om mig</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Webshop">
+      <div class="container">
+        <span class="section-label">Webshop</span>
+        <h1 class="page-hero__title">Alle produkter</h1>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="shop-layout">
+      <div class="container">
+
+        <p class="stripe-info">
+          🔒 Sikker betaling via Stripe — du sendes til Stripes betalingsside, når du klikker "Køb nu".
+        </p>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar" role="search" aria-label="Filtrer produkter">
+          <div class="filter-bar__categories">
+            <button class="filter-btn active" data-category="all">Alle</button>
+            <button class="filter-btn" data-category="bamser">Bamser</button>
+            <button class="filter-btn" data-category="tilbehoer">Tilbehør</button>
+          </div>
+
+          <div class="filter-bar__price">
+            <label for="price-range">
+              Maks pris: <span id="price-label">Alle priser</span>
+            </label>
+            <input
+              type="range"
+              id="price-range"
+              min="50"
+              max="1000"
+              step="50"
+              value="1000"
+              aria-label="Maksimal pris"
+            >
+          </div>
+        </div>
+
+        <!-- PRODUCT GRID — udfyldes af produkter.js -->
+        <div id="product-grid" class="product-grid" role="list" aria-label="Produktliste">
+          <!-- Produkterne renderes via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SPECIALBESTILLING OPFORDRING -->
+    <section class="py-section" aria-label="Mangler du noget?">
+      <div class="container container--narrow text-center">
+        <span class="section-label">Finder du ikke det du søger?</span>
+        <h2 class="section-title">Lav en specialbestilling</h2>
+        <div class="divider"></div>
+        <p class="section-intro">
+          Jeg hækler efter dine ønsker — vælg farver, størrelse og design selv.
+          Kontakt mig med din idé, og vi finder en løsning sammen.
+        </p>
+        <a href="specialbestilling.html" class="btn btn--primary btn--lg">Send en forespørgsel</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
+        <p class="footer__tagline">Lavet med kærlighed — ét stikken ad gangen.</p>
+        <p class="footer__copy">&copy; 2026 HæklingByFie</p>
+      </div>
+      <nav class="footer__links" aria-label="Sidelinks">
+        <a href="produkter.html">Produkter</a>
+        <a href="specialbestilling.html">Specialbestilling</a>
+        <a href="om-mig.html">Om mig</a>
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- PRODUKT-MODAL -->
+  <div class="product-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="product-modal__backdrop" id="modal-backdrop"></div>
+    <div class="product-modal__panel">
+      <button class="product-modal__close" id="modal-close" aria-label="Luk">&#x2715;</button>
+      <div class="product-modal__layout">
+
+        <!-- Billede -->
+        <div class="product-modal__img-wrap">
+          <img id="modal-img" src="" alt="" class="product-modal__img">
+          <span class="card__badge" id="modal-badge"></span>
+        </div>
+
+        <!-- Info -->
+        <div class="product-modal__info">
+          <h2 class="product-modal__title" id="modal-title"></h2>
+          <p class="product-modal__price" id="modal-price"></p>
+          <p class="product-modal__desc" id="modal-desc"></p>
+
+          <!-- Farve-vælger -->
+          <div class="product-modal__color-section">
+            <p class="product-modal__color-heading">Ønsket farve</p>
+            <div class="product-modal__swatches" id="modal-swatches" role="group" aria-label="Vælg ønsket garnfarve"></div>
+            <p class="product-modal__color-label" id="modal-color-label">Ingen farve valgt endnu</p>
+          </div>
+
+          <!-- Køb -->
+          <a href="#" id="modal-buy-btn" class="btn btn--primary btn--lg product-modal__buy" target="_blank" rel="noopener noreferrer">
+            Køb nu
+          </a>
+          <p class="product-modal__buy-hint">Husk at angive din valgte farve i kommentarfeltet ved betaling</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/produkter.js"></script>
+</body>
+</html>

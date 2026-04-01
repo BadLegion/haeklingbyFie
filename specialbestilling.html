@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bestil et unikt hæklet produkt hos HæklingByFie — beskriv dit ønske og upload et inspirationsbillede.">
+
+  <!-- GDPR: Indsæt dit Cookiebot account ID nedenfor -->
+  <!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+    data-cbid="DIN-COOKIEBOT-ID" data-blockingmode="auto" async></script> -->
+
+  <title>Specialbestilling — HæklingByFie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .form-section {
+      padding-top: var(--space-16);
+      padding-bottom: var(--space-24);
+    }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-16);
+      align-items: start;
+    }
+
+    .form-card {
+      background-color: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+
+    .form-sidebar {}
+
+    .sidebar-box {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .sidebar-box h3 {
+      font-size: var(--text-base);
+      font-weight: 600;
+      margin-bottom: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .sidebar-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .sidebar-box li {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+
+    .sidebar-box li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-sage);
+      font-weight: 700;
+    }
+
+    .upload-error {
+      background-color: var(--color-rose-light);
+      border: 1.5px solid var(--color-rose);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      color: #8B4540;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      margin-top: var(--space-3);
+    }
+
+    @media (max-width: 900px) {
+      .form-layout {
+        grid-template-columns: 1fr;
+      }
+      .form-sidebar {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hovednavigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
+        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+      </a>
+      <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="specialbestilling.html">Specialbestilling</a></li>
+        <li><a href="om-mig.html">Om mig</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Specialbestilling">
+      <div class="container">
+        <span class="section-label">Specialbestilling</span>
+        <h1 class="page-hero__title">Lav dit drømmeprodukt</h1>
+        <p class="page-hero__lead">
+          Har du en idé til et unikt hæklet produkt? Beskriv dit ønske herunder —
+          så vender jeg tilbage med pris og leveringstid inden for 2 hverdage.
+        </p>
+      </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+      <div class="container">
+        <div class="form-layout">
+
+          <!-- FORMULAR -->
+          <div class="form-card">
+
+            <!--
+              Formspree opsætning:
+              1. Gå til formspree.io og opret en gratis konto
+              2. Opret en ny form og kopiér dit unikke form-ID
+              3. Erstat YOUR_FORM_ID i action-attributten nedenfor
+            -->
+            <form
+              id="bestilling-form"
+              class="form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+
+              <!-- Navn + E-mail -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="navn">
+                    Navn <span class="required">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="navn"
+                    name="navn"
+                    class="form-input"
+                    placeholder="Dit fulde navn"
+                    required
+                    autocomplete="name"
+                  >
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">
+                    E-mail <span class="required">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    placeholder="din@email.dk"
+                    required
+                    autocomplete="email"
+                  >
+                </div>
+              </div>
+
+              <!-- Produkttype -->
+              <div class="form-group">
+                <label class="form-label" for="produkttype">Hvilken type produkt ønsker du?</label>
+                <select id="produkttype" name="produkttype" class="form-select">
+                  <option value="">— Vælg kategori —</option>
+                  <option value="bamse">Bamse / legetøj</option>
+                  <option value="toej">Babytøj / børnetøj</option>
+                  <option value="tilbehoer">Tilbehør (pung, kurv, m.m.)</option>
+                  <option value="andet">Andet / ved ikke endnu</option>
+                </select>
+              </div>
+
+              <!-- Beskrivelse -->
+              <div class="form-group">
+                <label class="form-label" for="besked">
+                  Beskriv dit ønske <span class="required">*</span>
+                </label>
+                <textarea
+                  id="besked"
+                  name="besked"
+                  class="form-textarea"
+                  placeholder="Beskriv så detaljeret som muligt: ønskede farver, størrelse, materiale, anledning, m.m."
+                  required
+                  rows="6"
+                ></textarea>
+                <span class="form-hint">Jo mere du beskriver, desto præcist kan jeg give dig et tilbud.</span>
+              </div>
+
+              <!-- Billedupload -->
+              <div class="form-group">
+                <label class="form-label" for="file-input">
+                  Inspirationsbillede <span style="font-weight:400; color: var(--color-text-muted);">(valgfrit)</span>
+                </label>
+
+                <div
+                  class="upload-zone"
+                  id="upload-zone"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Upload inspirationsbillede — klik eller træk et billede hertil"
+                >
+                  <input
+                    type="file"
+                    id="file-input"
+                    name="inspirationsbillede"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    class="upload-zone__input"
+                    aria-describedby="file-hint"
+                  >
+
+                  <!-- Upload prompt -->
+                  <div class="upload-zone__content" id="upload-content">
+                    <svg class="upload-zone__icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"/>
+                    </svg>
+                    <p class="upload-zone__text">
+                      Træk et billede hertil, eller
+                      <span class="upload-zone__link">klik for at vælge</span>
+                    </p>
+                    <p id="file-hint" class="upload-zone__hint">JPG, PNG eller WEBP — maks 10 MB</p>
+                  </div>
+
+                  <!-- Preview (skjult indtil fil vælges) -->
+                  <div class="upload-zone__preview hidden" id="upload-preview">
+                    <img id="preview-img" src="" alt="Forhåndsvisning af dit uploadede inspirationsbillede">
+                    <button
+                      type="button"
+                      class="upload-zone__remove"
+                      id="remove-file"
+                      aria-label="Fjern billede"
+                    >×</button>
+                  </div>
+                </div>
+
+                <p id="upload-error" class="upload-error hidden" role="alert"></p>
+              </div>
+
+              <!-- GDPR samtykke -->
+              <div class="form-group">
+                <label style="display:flex; align-items:flex-start; gap: var(--space-3); cursor:pointer;">
+                  <input type="checkbox" name="gdpr" required style="margin-top:3px; accent-color: var(--color-sage);">
+                  <span class="form-hint" style="font-size: var(--text-sm);">
+                    Jeg accepterer, at HæklingByFie gemmer mine oplysninger for at besvare min forespørgsel.
+                    Læs vores <a href="privatlivspolitik.html" style="color: var(--color-sage);">privatlivspolitik</a>.
+                    <span style="color: var(--color-rose);">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg" style="align-self: flex-start;">
+                Send forespørgsel
+              </button>
+
+            </form>
+          </div>
+
+          <!-- SIDEBAR -->
+          <aside class="form-sidebar" aria-label="Information om specialbestillinger">
+
+            <div class="sidebar-box">
+              <h3>🧶 Hvad kan jeg bestille?</h3>
+              <ul>
+                <li>Bamser og legetøj i egne farver</li>
+                <li>Babytøj og børnetøj</li>
+                <li>Huer, sutter og tilbehør</li>
+                <li>Dekorative kurve og boligting</li>
+                <li>Gavesæt til særlige anledninger</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>📦 Leveringstid</h3>
+              <ul>
+                <li>Svar på forespørgsel inden 2 hverdage</li>
+                <li>Produktionstid: typisk 1–3 uger</li>
+                <li>Levering med PostNord i hele Danmark</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>💳 Betaling</h3>
+              <ul>
+                <li>Betaling via Stripe — sikkert og nemt</li>
+                <li>Du modtager et betalingslink pr. e-mail</li>
+                <li>Ingen betaling før aftale er indgået</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-box">
+              <h3>✉️ Foretrækker du e-mail?</h3>
+              <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2);">
+                Du er også meget velkommen til at skrive direkte til
+                <a href="mailto:hej@haeklingbyfie.dk" style="color: var(--color-sage); font-weight: 600;">hej@haeklingbyfie.dk</a>
+              </p>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
+        <p class="footer__tagline">Lavet med kærlighed — ét stikken ad gangen.</p>
+        <p class="footer__copy">&copy; 2026 HæklingByFie</p>
+      </div>
+      <nav class="footer__links" aria-label="Sidelinks">
+        <a href="produkter.html">Produkter</a>
+        <a href="specialbestilling.html">Specialbestilling</a>
+        <a href="om-mig.html">Om mig</a>
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/specialbestilling.js"></script>
+</body>
+</html>
