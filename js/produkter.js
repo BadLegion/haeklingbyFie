@@ -96,17 +96,27 @@ function openProductModal(product) {
     ></button>
   `).join('');
 
+  let selectedColor = '';
+
   swatchWrap.querySelectorAll('.color-swatch').forEach(btn => {
     btn.addEventListener('click', () => {
       swatchWrap.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const colorName = btn.dataset.name;
-      colorLabel.textContent = 'Valgt farve: ' + colorName;
-      // Tilføj farven til Stripe-linket så det følger med ordren
+      selectedColor = btn.dataset.name;
+      colorLabel.textContent = 'Valgt farve: ' + selectedColor;
       const baseLink = product.stripeLink || '#';
-      buyBtn.href = baseLink === '#' ? '#' : baseLink + '?client_reference_id=' + encodeURIComponent(colorName);
+      buyBtn.href = baseLink === '#' ? '#' : baseLink + '?client_reference_id=' + encodeURIComponent(selectedColor);
     });
   });
+
+  // Tilføj til kurv-knap i modal
+  const modalAddBtn = document.getElementById('modal-add-btn');
+  if (modalAddBtn) {
+    modalAddBtn.onclick = () => {
+      addToCart(product, selectedColor);
+      closeProductModal();
+    };
+  }
 
   modal.classList.add('is-open');
   document.body.style.overflow = 'hidden';
@@ -137,14 +147,8 @@ function renderProducts(products, targetId = 'product-grid') {
   }
 
   grid.innerHTML = products.map(p => `
-    <article
-      class="card card--clickable"
-      data-product-id="${p.id}"
-      tabindex="0"
-      role="button"
-      aria-label="Åbn ${p.title}"
-    >
-      <div class="card__img-wrap">
+    <article class="card" data-product-id="${p.id}">
+      <div class="card__img-wrap card--clickable" tabindex="0" role="button" aria-label="Åbn ${p.title}">
         <img src="${p.image}" alt="${p.title}" loading="lazy">
         <span class="card__badge">${formatCategory(p.category)}</span>
       </div>
@@ -152,25 +156,30 @@ function renderProducts(products, targetId = 'product-grid') {
         <h3 class="card__title">${p.title}</h3>
         <p class="card__desc">${p.desc.split('.')[0]}.</p>
         <p class="card__price">${p.price} kr.</p>
-        <span class="btn btn--outline card__cta" style="pointer-events:none;">
-          Se produkt &amp; vælg farve
-        </span>
+        <div class="card__actions">
+          <button class="btn btn--outline card__cta card--open-btn">Se produkt</button>
+          <button class="btn btn--primary card__add-btn">+ Kurv</button>
+        </div>
       </div>
     </article>
   `).join('');
 
-  grid.querySelectorAll('.card--clickable').forEach(card => {
-    const openModal = () => {
-      const id = parseInt(card.dataset.productId, 10);
-      const product = PRODUCTS.find(p => p.id === id);
-      if (product) openProductModal(product);
-    };
-    card.addEventListener('click', openModal);
-    card.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openModal();
-      }
+  grid.querySelectorAll('.card').forEach(card => {
+    const id = parseInt(card.dataset.productId, 10);
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    const openModal = () => openProductModal(product);
+
+    card.querySelector('.card--open-btn')?.addEventListener('click', openModal);
+    card.querySelector('.card__img-wrap')?.addEventListener('click', openModal);
+    card.querySelector('.card__img-wrap')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+    });
+
+    card.querySelector('.card__add-btn')?.addEventListener('click', e => {
+      e.stopPropagation();
+      addToCart(product, '');
     });
   });
 }

@@ -368,6 +368,10 @@
         <li><a href="specialbestilling.html">Specialbestilling</a></li>
         <li><a href="om-mig.html">Om mig</a></li>
       </ul>
+      <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Åbn kurv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
     </div>
   </nav>
 
@@ -547,16 +551,31 @@
           </div>
 
           <!-- Køb -->
-          <a href="#" id="modal-buy-btn" class="btn btn--primary btn--lg product-modal__buy" target="_blank" rel="noopener noreferrer">
-            Køb nu
-          </a>
+          <div class="product-modal__buy-row">
+            <button id="modal-add-btn" class="btn btn--outline btn--lg product-modal__buy">+ Tilføj til kurv</button>
+            <a href="#" id="modal-buy-btn" class="btn btn--primary btn--lg product-modal__buy" target="_blank" rel="noopener noreferrer">Køb nu</a>
+          </div>
         </div>
 
       </div>
     </div>
   </div>
 
+  <!-- KURV DRAWER -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer__backdrop" id="cart-backdrop"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2>Din kurv</h2>
+        <button class="cart-drawer__close" id="cart-close" aria-label="Luk kurv">✕</button>
+      </div>
+      <div class="cart-drawer__items" id="cart-items"></div>
+      <div class="cart-drawer__footer" id="cart-footer"></div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/produkter.js"></script>
   <script>
     (function () {
