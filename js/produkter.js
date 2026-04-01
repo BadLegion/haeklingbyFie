@@ -55,41 +55,6 @@ function formatCategory(cat) {
   return CATEGORY_LABELS[cat] || cat;
 }
 
-/* ---------- Dyre-ikoner til Træring-vælger ---------- */
-const ANIMAL_ICONS = {
-  'Kanin': `<svg viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <ellipse cx="14" cy="9" rx="3.5" ry="8" fill="#F0E8E0" stroke="#C8B8A8" stroke-width="1.5"/>
-    <ellipse cx="26" cy="9" rx="3.5" ry="8" fill="#F0E8E0" stroke="#C8B8A8" stroke-width="1.5"/>
-    <ellipse cx="14" cy="9" rx="1.8" ry="5.8" fill="#F5C6C2"/>
-    <ellipse cx="26" cy="9" rx="1.8" ry="5.8" fill="#F5C6C2"/>
-    <circle cx="20" cy="28" r="13" fill="#F0E8E0" stroke="#C8B8A8" stroke-width="1.5"/>
-    <circle cx="15.5" cy="25" r="2" fill="#7A5A40"/>
-    <circle cx="24.5" cy="25" r="2" fill="#7A5A40"/>
-    <ellipse cx="20" cy="30" rx="2.2" ry="1.6" fill="#F5C6C2"/>
-    <path d="M17.5 31.5 Q20 34 22.5 31.5" stroke="#C8B8A8" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-  </svg>`,
-  'Elefant': `<svg viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <ellipse cx="6.5" cy="20" rx="5.5" ry="8.5" fill="#C8C0D0" stroke="#A8A0B8" stroke-width="1.5"/>
-    <ellipse cx="33.5" cy="20" rx="5.5" ry="8.5" fill="#C8C0D0" stroke="#A8A0B8" stroke-width="1.5"/>
-    <circle cx="20" cy="19" r="12.5" fill="#D0C8D8" stroke="#A8A0B8" stroke-width="1.5"/>
-    <ellipse cx="20" cy="23" rx="5" ry="3.5" fill="#C0B8C8"/>
-    <path d="M15 29 Q12 35 15 40 Q17 42 19.5 40" stroke="#A8A0B8" stroke-width="2" stroke-linecap="round" fill="none"/>
-    <circle cx="16" cy="16" r="2" fill="#3A2A4A"/>
-    <circle cx="24" cy="16" r="2" fill="#3A2A4A"/>
-  </svg>`,
-  'Bjørn': `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <circle cx="11" cy="11" r="6.5" fill="#C8A070" stroke="#A07840" stroke-width="1.5"/>
-    <circle cx="29" cy="11" r="6.5" fill="#C8A070" stroke="#A07840" stroke-width="1.5"/>
-    <circle cx="11" cy="11" r="4" fill="#D8B888"/>
-    <circle cx="29" cy="11" r="4" fill="#D8B888"/>
-    <circle cx="20" cy="24" r="14" fill="#C8A070" stroke="#A07840" stroke-width="1.5"/>
-    <ellipse cx="20" cy="28.5" rx="6.5" ry="4.5" fill="#D8B888"/>
-    <circle cx="15" cy="21" r="2.2" fill="#5A3010"/>
-    <circle cx="25" cy="21" r="2.2" fill="#5A3010"/>
-    <ellipse cx="20" cy="26.5" rx="2.2" ry="1.6" fill="#8B5A20"/>
-    <path d="M17 29.5 Q20 32.5 23 29.5" stroke="#A07840" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-  </svg>`
-};
 
 /* ---------- Filtrering ---------- */
 function updatePriceLabel(value) {
@@ -171,16 +136,9 @@ function openProductModal(product) {
   if (optionsWrap) {
     if (product.options && product.options.length > 0) {
       optionsWrap.innerHTML = product.options.map(opt => {
-        const hasIcons = opt.choices.every(c => ANIMAL_ICONS[c]);
-        const buttons = opt.choices.map(choice => {
-          if (hasIcons) {
-            return `<button class="option-btn option-btn--animal" data-option="${opt.label}" data-choice="${choice}" type="button" aria-label="${choice}">
-              ${ANIMAL_ICONS[choice]}
-              <span>${choice}</span>
-            </button>`;
-          }
-          return `<button class="option-btn" data-option="${opt.label}" data-choice="${choice}" type="button">${choice}</button>`;
-        }).join('');
+        const buttons = opt.choices.map(choice =>
+          `<button class="option-btn" data-option="${opt.label}" data-choice="${choice}" type="button">${choice}</button>`
+        ).join('');
 
         return `<div class="modal-option-group">
           <p class="modal-option-heading">${opt.label}</p>
