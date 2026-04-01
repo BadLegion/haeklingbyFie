@@ -19,9 +19,13 @@ const PRODUCTS = [
     desc: "Håndlavet rangler i 100 % bomuld med et blødt og dejligt greb. Perfekt som gave til de mindste og fremstillet med omhu i hvert eneste led.",
     category: "tilbehoer",
     price: 175,
-    // BILLEDE: Gem dit rangler-foto i images/products/ og skift filnavnet herunder
-    image: "images/products/clutch-pung.jpg",
-    stripeLink: "#"
+    image: "images/products/rangler.jpg",
+    stripeLink: "#",
+    colors: [
+      { name: "Lyserød / Pink",      hex1: "#F5C6C2", hex2: "#D63F7A" },
+      { name: "Lyseblå / Mørkeblå",  hex1: "#A8CCDC", hex2: "#2F6FA6" },
+      { name: "Brun / Beige",        hex1: "#8B6347", hex2: "#D9C4A8" }
+    ]
   },
 ];
 
@@ -92,18 +96,23 @@ function openProductModal(product) {
   badge.textContent = CATEGORY_LABELS[product.category] || product.category;
   colorLabel.textContent = 'Ingen farve valgt endnu';
 
-  // Byg farve-swatches
-  swatchWrap.innerHTML = YARN_COLORS.map(c => `
-    <button
+  // Brug produkt-specifikke farver hvis de er defineret, ellers fælles garnfarver
+  const colorList = product.colors || YARN_COLORS;
+
+  // Byg farve-swatches — to-farvet split hvis hex2 er defineret
+  swatchWrap.innerHTML = colorList.map(c => {
+    const bg = c.hex2
+      ? `background: linear-gradient(135deg, ${c.hex1} 50%, ${c.hex2} 50%);`
+      : `background-color: ${c.hex1 || c.hex};`;
+    return `<button
       class="color-swatch"
-      data-hex="${c.hex}"
       data-name="${c.name}"
-      style="background-color:${c.hex};"
+      style="${bg}"
       title="${c.name}"
       aria-label="${c.name}"
       type="button"
-    ></button>
-  `).join('');
+    ></button>`;
+  }).join('');
 
   let selectedColor = '';
 
