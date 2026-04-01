@@ -25,6 +25,9 @@ const PRODUCTS = [
       { name: "Lyserød / Pink",      hex1: "#F5C6C2", hex2: "#D63F7A" },
       { name: "Lyseblå / Mørkeblå",  hex1: "#A8CCDC", hex2: "#2F6FA6" },
       { name: "Brun / Beige",        hex1: "#8B6347", hex2: "#D9C4A8" }
+    ],
+    options: [
+      { label: "Træring", choices: ["Elefant", "Kanin", "Bjørn"] }
     ]
   },
 ];
@@ -116,6 +119,7 @@ function openProductModal(product) {
   }).join('');
 
   let selectedColor = '';
+  let selectedOptions = {};
 
   swatchWrap.querySelectorAll('.color-swatch').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -126,11 +130,42 @@ function openProductModal(product) {
     });
   });
 
+  // Byg ekstra valgmuligheder (fx Træring)
+  const optionsWrap = document.getElementById('modal-options');
+  if (optionsWrap) {
+    if (product.options && product.options.length > 0) {
+      optionsWrap.innerHTML = product.options.map(opt => `
+        <div class="modal-option-group">
+          <p class="modal-option-heading">${opt.label}</p>
+          <div class="modal-option-buttons" data-option="${opt.label}">
+            ${opt.choices.map(choice => `
+              <button class="option-btn" data-option="${opt.label}" data-choice="${choice}" type="button">${choice}</button>
+            `).join('')}
+          </div>
+          <p class="modal-option-label" id="option-label-${opt.label}">Ingen valgt endnu</p>
+        </div>
+      `).join('');
+
+      optionsWrap.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const optName = btn.dataset.option;
+          optionsWrap.querySelectorAll(`.option-btn[data-option="${optName}"]`).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedOptions[optName] = btn.dataset.choice;
+          const lbl = document.getElementById('option-label-' + optName);
+          if (lbl) lbl.textContent = 'Valgt: ' + btn.dataset.choice;
+        });
+      });
+    } else {
+      optionsWrap.innerHTML = '';
+    }
+  }
+
   // "Læg i kurv"-knap i modal
   const modalAddBtn = document.getElementById('modal-add-btn');
   if (modalAddBtn) {
     modalAddBtn.onclick = () => {
-      addToCart(product, selectedColor);
+      addToCart(product, selectedColor, selectedOptions);
       closeProductModal();
     };
   }

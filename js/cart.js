@@ -13,9 +13,10 @@ function saveCart(cart) {
   renderCartItems();
 }
 
-function addToCart(product, selectedColor) {
+function addToCart(product, selectedColor, selectedOptions = {}) {
   const cart = getCart();
-  const existing = cart.find(i => i.id === product.id && i.color === (selectedColor || ''));
+  const optKey = JSON.stringify(selectedOptions);
+  const existing = cart.find(i => i.id === product.id && i.color === (selectedColor || '') && JSON.stringify(i.options || {}) === optKey);
   if (existing) {
     existing.qty += 1;
   } else {
@@ -26,6 +27,7 @@ function addToCart(product, selectedColor) {
       image: product.image,
       stripeLink: product.stripeLink,
       color: selectedColor || '',
+      options: selectedOptions,
       qty: 1
     });
   }
@@ -74,6 +76,9 @@ function renderCartItems() {
       <div class="cart-item__info">
         <p class="cart-item__title">${item.title}</p>
         ${item.color ? `<p class="cart-item__color">Farve: ${item.color}</p>` : ''}
+        ${item.options && Object.keys(item.options).length > 0
+          ? Object.entries(item.options).map(([k, v]) => `<p class="cart-item__color">${k}: ${v}</p>`).join('')
+          : ''}
         <p class="cart-item__price">${item.price} kr.</p>
         <div class="cart-item__qty">
           <button onclick="updateQty(${item.id}, '${item.color}', -1)" aria-label="Færre">−</button>
@@ -191,9 +196,15 @@ function proceedToStripe() {
   err.style.display = 'none';
 
   const cart = getCart();
-  const orderLines = cart.map(i =>
-    `${i.qty}x ${i.title}${i.color ? ' (' + i.color + ')' : ''}`
-  ).join(', ');
+  const orderLines = cart.map(i => {
+    let detail = i.color ? ' (' + i.color : '';
+    if (i.options && Object.keys(i.options).length > 0) {
+      const opts = Object.entries(i.options).map(([k, v]) => k + ': ' + v).join(', ');
+      detail += (detail ? ', ' : ' (') + opts;
+    }
+    if (detail) detail += ')';
+    return `${i.qty}x ${i.title}${detail}`;
+  }).join(', ');
 
   const ref = [
     'Ordre: ' + orderLines,
