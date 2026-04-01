@@ -13,6 +13,16 @@ const PRODUCTS = [
     image: "images/products/clutch-pung.jpg",
     stripeLink: "#"
   },
+  {
+    id: 4,
+    title: "Rangler",
+    desc: "Håndlavet rangler i 100 % bomuld med et blødt og dejligt greb. Perfekt som gave til de mindste og fremstillet med omhu i hvert eneste led.",
+    category: "tilbehoer",
+    price: 175,
+    // BILLEDE: Gem dit rangler-foto i images/products/ og skift filnavnet herunder
+    image: "images/products/clutch-pung.jpg",
+    stripeLink: "#"
+  },
 ];
 
 
