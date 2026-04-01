@@ -54,15 +54,16 @@ function updateCartBadge() {
   });
 }
 
+/* ── Trin 1: Vis kurv-indhold ───────────────────────────────── */
 function renderCartItems() {
-  const wrap = document.getElementById('cart-items');
+  const wrap   = document.getElementById('cart-items');
   const footer = document.getElementById('cart-footer');
   if (!wrap) return;
 
   const cart = getCart();
 
   if (cart.length === 0) {
-    wrap.innerHTML = '<p class="cart-empty">Din kurv er tom 🧶</p>';
+    wrap.innerHTML  = '<p class="cart-empty">Din kurv er tom 🧶</p>';
     footer.innerHTML = '';
     return;
   }
@@ -86,38 +87,134 @@ function renderCartItems() {
 
   const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 
-  // Byg oversigt til Stripe (sendes som client_reference_id)
-  const orderSummary = cart.map(i =>
-    `${i.qty}x ${i.title}${i.color ? ' ('+i.color+')' : ''}`
-  ).join(', ');
+  footer.innerHTML = `
+    <div class="cart-total">
+      <span>Total</span>
+      <span>${total} kr.</span>
+    </div>
+    <button class="btn btn--primary btn--lg cart-checkout__btn" onclick="showDeliveryForm()">
+      Fortsæt til levering →
+    </button>
+    <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
+  `;
+}
 
-  // STRIPE PAYMENT LINK — indsæt dit link her når du har oprettet det i Stripe Dashboard
-  const STRIPE_LINK = 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER';
-  const checkoutUrl = STRIPE_LINK !== 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER'
-    ? STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(orderSummary)
-    : '#';
+/* ── Trin 2: Vis leveringsadresse-formular ──────────────────── */
+function showDeliveryForm() {
+  const wrap   = document.getElementById('cart-items');
+  const footer = document.getElementById('cart-footer');
+  if (!wrap) return;
+
+  const cart  = getCart();
+  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+  wrap.innerHTML = `
+    <div class="cart-delivery">
+      <button class="cart-delivery__back" onclick="renderCartItems()" aria-label="Tilbage til kurv">
+        ← Tilbage
+      </button>
+      <h3 class="cart-delivery__title">Leveringsadresse</h3>
+
+      <div class="cart-field">
+        <label class="cart-field__label" for="del-name">Fulde navn <span class="required">*</span></label>
+        <input class="cart-field__input" id="del-name" type="text" placeholder="Fornavn Efternavn" autocomplete="name">
+      </div>
+
+      <div class="cart-field">
+        <label class="cart-field__label" for="del-addr">Vejnavn og nummer <span class="required">*</span></label>
+        <input class="cart-field__input" id="del-addr" type="text" placeholder="Eksempelvej 12, 2. tv." autocomplete="street-address">
+      </div>
+
+      <div class="cart-field-row">
+        <div class="cart-field">
+          <label class="cart-field__label" for="del-zip">Postnummer <span class="required">*</span></label>
+          <input class="cart-field__input" id="del-zip" type="text" placeholder="1234" maxlength="4" autocomplete="postal-code">
+        </div>
+        <div class="cart-field">
+          <label class="cart-field__label" for="del-city">By <span class="required">*</span></label>
+          <input class="cart-field__input" id="del-city" type="text" placeholder="København" autocomplete="address-level2">
+        </div>
+      </div>
+
+      <div class="cart-field">
+        <label class="cart-field__label" for="del-phone">Telefon <span class="required">*</span></label>
+        <input class="cart-field__input" id="del-phone" type="tel" placeholder="12 34 56 78" autocomplete="tel">
+      </div>
+
+      <div class="cart-field">
+        <label class="cart-field__label" for="del-email">E-mail <span class="required">*</span></label>
+        <input class="cart-field__input" id="del-email" type="email" placeholder="din@email.dk" autocomplete="email">
+      </div>
+
+      <p id="cart-delivery-error" class="cart-delivery__error" style="display:none;"></p>
+    </div>
+  `;
 
   footer.innerHTML = `
     <div class="cart-total">
       <span>Total</span>
       <span>${total} kr.</span>
     </div>
-    <div class="cart-order-summary">
-      ${cart.map(i => `
-        <div class="cart-order-line">
-          <span>${i.title}${i.color ? ' <em>(${i.color})</em>' : ''} × ${i.qty}</span>
-          <span>${i.price * i.qty} kr.</span>
-        </div>
-      `).join('')}
-    </div>
-    <a href="${checkoutUrl}"
-       class="btn btn--primary btn--lg cart-checkout__btn"
-       ${checkoutUrl !== '#' ? 'target="_blank" rel="noopener noreferrer"' : 'onclick="alert(\'Stripe Payment Link er endnu ikke opsat — se vejledningen i koden.\'); return false;"'}>
+    <button class="btn btn--primary btn--lg cart-checkout__btn" onclick="proceedToStripe()">
       Gå til betaling →
-    </a>
+    </button>
     <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
-    <p class="cart-checkout__hint" style="margin-top:var(--space-1);">📦 Din leveringsadresse angives på næste side</p>
+    <p class="cart-checkout__hint" style="margin-top:var(--space-1);">📦 Levering med DAO i hele Danmark</p>
   `;
+}
+
+/* ── Trin 3: Valider adresse og åbn Stripe ──────────────────── */
+function proceedToStripe() {
+  const name  = document.getElementById('del-name')?.value.trim();
+  const addr  = document.getElementById('del-addr')?.value.trim();
+  const zip   = document.getElementById('del-zip')?.value.trim();
+  const city  = document.getElementById('del-city')?.value.trim();
+  const phone = document.getElementById('del-phone')?.value.trim();
+  const email = document.getElementById('del-email')?.value.trim();
+  const err   = document.getElementById('cart-delivery-error');
+
+  if (!name || !addr || !zip || !city || !phone || !email) {
+    err.textContent = 'Udfyld venligst alle felter markeret med *.';
+    err.style.display = 'block';
+    return;
+  }
+  if (!/^\d{4}$/.test(zip)) {
+    err.textContent = 'Postnummer skal bestå af 4 cifre.';
+    err.style.display = 'block';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    err.textContent = 'Indtast venligst en gyldig e-mailadresse.';
+    err.style.display = 'block';
+    return;
+  }
+  err.style.display = 'none';
+
+  const cart = getCart();
+  const orderLines = cart.map(i =>
+    `${i.qty}x ${i.title}${i.color ? ' (' + i.color + ')' : ''}`
+  ).join(', ');
+
+  const ref = [
+    'Ordre: ' + orderLines,
+    'Navn: '  + name,
+    'Adresse: ' + addr + ', ' + zip + ' ' + city,
+    'Tlf: '   + phone,
+    'Email: ' + email
+  ].join(' | ');
+
+  // STRIPE PAYMENT LINK — indsæt dit link her når du har oprettet det i Stripe Dashboard
+  const STRIPE_LINK = 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER';
+
+  if (STRIPE_LINK === 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER') {
+    alert('Stripe Payment Link er endnu ikke opsat — se vejledningen i js/cart.js.');
+    return;
+  }
+
+  const checkoutUrl = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(ref)
+    + '&prefilled_email=' + encodeURIComponent(email);
+
+  window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
 }
 
 function openCart() {
