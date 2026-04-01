@@ -9,45 +9,28 @@ const PRODUCTS = [
     title: "Brille Etui",
     desc: "Håndlavede brille etui lavet i 100 % bomuld og afsluttet med to fine træ perler for et sødt og naturligt finish.",
     category: "tilbehoer",
-    price: 179,
+    price: 120,
     image: "images/products/clutch-pung.jpg",
     stripeLink: "#"
   },
-  {
-    id: 5,
-    title: "Lynlåspung i mohair",
-    desc: "Blød og luksuriøs pung hæklet i blødt mohair-garn med lynlås. Utrolig dejlig at holde og se på — perfekt som gaveide.",
-    category: "tilbehoer",
-    price: 149,
-    image: "images/products/lynlaaspung.jpg",
-    stripeLink: "#"
-  }
 ];
 
 
 /* ---------- Garnfarver til farve-vælgeren ---------- */
 const YARN_COLORS = [
-  { name: "Naturhvid",   hex: "#F8F4EC" },
-  { name: "Creme",       hex: "#F0E8D0" },
-  { name: "Blød rose",   hex: "#E8ADA6" },
-  { name: "Babylyserød", hex: "#F0C4C0" },
-  { name: "Koral",       hex: "#E4907C" },
-  { name: "Terrakotta",  hex: "#C4705A" },
-  { name: "Lavendel",    hex: "#C0A8D8" },
-  { name: "Lys lilla",   hex: "#D8C4E8" },
-  { name: "Himmelblå",   hex: "#A4CCDC" },
-  { name: "Mintgrøn",    hex: "#A4CCC0" },
-  { name: "Skovgrøn",    hex: "#7AA88C" },
-  { name: "Solskin",     hex: "#EDD080" },
-  { name: "Sandbeige",   hex: "#D8C8A8" },
-  { name: "Varm grå",    hex: "#C4BAB0" },
-  { name: "Chokolade",   hex: "#A07860" }
+  { name: "Råhvid",    hex: "#F5F0E8" },
+  { name: "Lyserød",   hex: "#F5C6C2" },
+  { name: "Beige",     hex: "#D9C4A8" },
+  { name: "Brun",      hex: "#8B6347" },
+  { name: "Lyseblå",   hex: "#A8CCDC" },
+  { name: "Lyselilla", hex: "#D4C0E8" },
+  { name: "Lysegul",   hex: "#F0E098" }
 ];
 
 const CATEGORY_LABELS = {
   bamser:    "Bamser",
   toej:      "Tøj",
-  tilbehoer: "Tilbehør"
+  tilbehoer: "Accessories"
 };
 
 function formatCategory(cat) {
@@ -117,7 +100,11 @@ function openProductModal(product) {
     btn.addEventListener('click', () => {
       swatchWrap.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      colorLabel.textContent = 'Valgt farve: ' + btn.dataset.name;
+      const colorName = btn.dataset.name;
+      colorLabel.textContent = 'Valgt farve: ' + colorName;
+      // Tilføj farven til Stripe-linket så det følger med ordren
+      const baseLink = product.stripeLink || '#';
+      buyBtn.href = baseLink === '#' ? '#' : baseLink + '?client_reference_id=' + encodeURIComponent(colorName);
     });
   });
 
