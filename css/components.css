@@ -318,15 +318,14 @@
 
 .card__img-wrap {
   position: relative;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
   background-color: var(--color-surface);
 }
 
 .card__img-wrap img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
   transition: transform 0.4s ease;
 }
 
@@ -796,8 +795,7 @@ input[type="range"] {
 
 .product-modal__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: var(--radius-md);
 }
