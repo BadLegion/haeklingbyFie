@@ -30,7 +30,7 @@ const PRODUCTS = [
   {
     id: 4,
     title: "Rangler",
-    desc: "Håndlavede rangler lavet i 100 % bomuld med træperler, en sød lille træfigur og en træring.",
+    desc: "Giv de mindste en helt særlig start med en håndlavet rangle. Hver rangle hækles i et blødt bomuldsgarn og er designet til små, nysgerrige hænder. De fine træperler, den glatte træring og den søde træfigur skaber tilsammen en sanselig oplevelse, der både stimulerer og underholder.<br><br>Ranglerne er håndlavede med øje for både æstetik og kvalitet. Perfekte som barselsgave, dåbsgave eller en kærlig forkælelse til din egen lille guldklump. En rangle herfra er ikke bare et legetøj — det er et lille stykke håndværk, skabt med hjertet.",
     category: "baby",
     price: 175,
     image: "images/products/rangler.jpg",
@@ -112,7 +112,7 @@ function openProductModal(product) {
   img.alt           = product.title;
   title.textContent = product.title;
   price.textContent = product.price + ' kr.';
-  desc.textContent  = product.desc;
+  desc.innerHTML    = product.desc;
   badge.textContent = CATEGORY_LABELS[product.category] || product.category;
   colorLabel.textContent = 'Ingen farve valgt endnu';
 
