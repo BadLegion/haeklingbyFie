@@ -24,7 +24,9 @@ const PRODUCTS = [
     colors: [
       { name: "Lyserød", hex: "#F5C6C2" },
       { name: "Blå",     hex: "#A8CCDC" },
-      { name: "Grøn",    hex: "#A8C5A0" }
+      { name: "Grøn",    hex: "#A8C5A0" },
+      { name: "Lilla",   hex: "#C9B0D8" },
+      { name: "Gul",     hex: "#F0E098" }
     ]
   },
   {
