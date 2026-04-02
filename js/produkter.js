@@ -18,7 +18,7 @@ const PRODUCTS = [
     title: "Sprutte Bamse",
     desc: "Blød og kærlighedfuld sprutte bamse, håndlavet i 100 % bomuld. Perfekt til de mindste og som gave ved barnedåb eller fødsel.",
     category: "sprutte_bamse",
-    price: 175, // PRIS: opdater til korrekt pris
+    price: 100,
     image: "images/products/sprutte-bamse.jpg", // BILLEDE: tilføj foto i images/products/
     stripeLink: "#",
     colors: [
