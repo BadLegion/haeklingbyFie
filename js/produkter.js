@@ -17,7 +17,7 @@ const PRODUCTS = [
     id: 5,
     title: "Sprutte Bamse",
     desc: "Blød og kærlighedfuld sprutte bamse, håndlavet i 100 % bomuld. Perfekt til de mindste og som gave ved barnedåb eller fødsel.",
-    category: "sprutte_bamse",
+    category: "bamser",
     price: 100,
     image: "images/products/sprutte-bamse.jpg", // BILLEDE: tilføj foto i images/products/
     stripeLink: "#",
@@ -63,7 +63,7 @@ const CATEGORY_LABELS = {
   toej:          "Tøj",
   tilbehoer:     "Accessories",
   baby:          "Baby",
-  sprutte_bamse: "Sprutte Bamse"
+
 };
 
 function formatCategory(cat) {
