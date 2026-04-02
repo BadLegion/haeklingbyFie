@@ -16,7 +16,7 @@ const PRODUCTS = [
   {
     id: 5,
     title: "Sprutte Bamse",
-    desc: "Blød og kærlighedfuld sprutte bamse, håndlavet i 100 % bomuld. Perfekt til de mindste og som gave ved barnedåb eller fødsel.",
+    desc: "Søde, håndlavede sprutte bamser hæklet i bomuld med håndbroderede øjne, der både giver et sødt udtryk og ekstra sikkerhed for selv de allermindste.",
     category: "bamser",
     price: 100,
     image: "images/products/sprutte-bamse.jpg", // BILLEDE: tilføj foto i images/products/
