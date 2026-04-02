@@ -330,11 +330,13 @@
   position: relative;
   overflow: hidden;
   background-color: var(--color-surface);
+  aspect-ratio: 1 / 1;
 }
 
 .card__img-wrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -831,7 +833,8 @@ input[type="range"] {
 
 .product-modal__img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   display: block;
   border-radius: var(--radius-md);
 }
