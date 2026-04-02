@@ -824,10 +824,6 @@ input[type="range"] {
   position: relative;
   background-color: var(--color-white);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-  min-height: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: var(--space-6);
 }
 
