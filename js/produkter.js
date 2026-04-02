@@ -30,7 +30,7 @@ const PRODUCTS = [
   {
     id: 4,
     title: "Rangler",
-    desc: "En sød og sanselig rangle til de mindste.<br><br>Håndlavet i blød bomuld med træperler, træring og en fin træfigur. Den blide raslelyd og de naturlige materialer stimulerer små, nysgerrige hænder og sanser.",
+    desc: "En sød og sanselig rangle til de mindste.<br><br>Håndlavet i blød bomuld med træperler, træring og en fin træfigur. Den blide raslelyd og de naturlige materialer stimulerer små, nysgerrige hænder og sanser.<br><br>Perfekt som gave — eller som en kærlig lille forkælelse.",
     category: "baby",
     price: 175,
     image: "images/products/rangler.jpg",
