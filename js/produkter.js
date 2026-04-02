@@ -30,7 +30,7 @@ const PRODUCTS = [
   {
     id: 4,
     title: "Rangler",
-    desc: "Håndlavet rangler i 100 % bomuld med et blødt og dejligt greb. Perfekt som gave til de mindste og fremstillet med omhu i hvert eneste led.",
+    desc: "Håndlavede rangler lavet i 100 % bomuld med træperler, en sød lille træfigur og en træring.",
     category: "baby",
     price: 175,
     image: "images/products/rangler.jpg",
