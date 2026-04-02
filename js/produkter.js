@@ -30,7 +30,7 @@ const PRODUCTS = [
   {
     id: 4,
     title: "Rangler",
-    desc: "Giv de mindste en helt særlig start med en håndlavet rangle. Hver rangle hækles i et blødt bomuldsgarn og er designet til små, nysgerrige hænder. De fine træperler, den glatte træring og den søde træfigur skaber tilsammen en sanselig oplevelse, der både stimulerer og underholder.<br><br>Ranglerne er håndlavede med øje for både æstetik og kvalitet. Perfekte som barselsgave, dåbsgave eller en kærlig forkælelse til din egen lille guldklump. En rangle herfra er ikke bare et legetøj — det er et lille stykke håndværk, skabt med hjertet.",
+    desc: "En sød og sanselig rangle til de mindste.<br><br>Håndlavet i blød bomuld med træperler, træring og en fin træfigur. Den blide raslelyd og de naturlige materialer stimulerer små, nysgerrige hænder og sanser.",
     category: "baby",
     price: 175,
     image: "images/products/rangler.jpg",
