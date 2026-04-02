@@ -833,8 +833,7 @@ input[type="range"] {
 
 .product-modal__img {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+  height: auto;
   display: block;
   border-radius: var(--radius-md);
 }
