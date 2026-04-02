@@ -963,14 +963,17 @@ input[type="range"] {
   }
   .product-modal__img-wrap {
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    min-height: 260px;
-    max-height: 300px;
+    padding: var(--space-8);
+  }
+  .product-modal__img {
+    border-radius: var(--radius-lg);
   }
   .product-modal__panel {
     max-height: 95vh;
   }
   .product-modal__info {
-    padding: var(--space-6);
+    padding: var(--space-6) var(--space-6) var(--space-8);
+    border-top: 1px solid var(--color-border);
   }
 }
 
