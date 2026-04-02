@@ -1347,6 +1347,7 @@ input[type="range"] {
 
 .modal-option-label {
   font-size: var(--text-xs);
+  font-style: italic;
   color: var(--color-text-muted);
   margin-top: var(--space-2);
 }
