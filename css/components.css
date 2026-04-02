@@ -860,7 +860,6 @@ input[type="range"] {
 
 .product-modal__desc {
   font-size: var(--text-base);
-  font-style: italic;
   color: var(--color-text-muted);
   line-height: 1.7;
 }
@@ -891,6 +890,7 @@ input[type="range"] {
 
 .product-modal__color-label {
   font-size: var(--text-sm);
+  font-style: italic;
   color: var(--color-text-muted);
   min-height: 1.4em;
   font-style: italic;
