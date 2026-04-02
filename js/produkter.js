@@ -14,6 +14,20 @@ const PRODUCTS = [
     stripeLink: "#"
   },
   {
+    id: 5,
+    title: "Sprutte Bamse",
+    desc: "Blød og kærlighedfuld sprutte bamse, håndlavet i 100 % bomuld. Perfekt til de mindste og som gave ved barnedåb eller fødsel.",
+    category: "sprutte_bamse",
+    price: 175, // PRIS: opdater til korrekt pris
+    image: "images/products/sprutte-bamse.jpg", // BILLEDE: tilføj foto i images/products/
+    stripeLink: "#",
+    colors: [
+      { name: "Lyserød", hex: "#F5C6C2" },
+      { name: "Blå",     hex: "#A8CCDC" },
+      { name: "Grøn",    hex: "#A8C5A0" }
+    ]
+  },
+  {
     id: 4,
     title: "Rangler",
     desc: "Håndlavet rangler i 100 % bomuld med et blødt og dejligt greb. Perfekt som gave til de mindste og fremstillet med omhu i hvert eneste led.",
@@ -45,10 +59,11 @@ const YARN_COLORS = [
 ];
 
 const CATEGORY_LABELS = {
-  bamser:    "Bamser",
-  toej:      "Tøj",
-  tilbehoer: "Accessories",
-  baby:      "Baby"
+  bamser:        "Bamser",
+  toej:          "Tøj",
+  tilbehoer:     "Accessories",
+  baby:          "Baby",
+  sprutte_bamse: "Sprutte Bamse"
 };
 
 function formatCategory(cat) {
