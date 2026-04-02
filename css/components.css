@@ -330,12 +330,14 @@
   position: relative;
   overflow: hidden;
   background-color: var(--color-surface);
+  padding: var(--space-4);
 }
 
 .card__img-wrap img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius-md);
   transition: transform 0.4s ease;
 }
 
