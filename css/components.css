@@ -312,7 +312,7 @@
 
 /* ---- Product Card ---- */
 .card {
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -329,14 +329,17 @@
 .card__img-wrap {
   position: relative;
   overflow: hidden;
-  background-color: var(--color-surface);
-  padding: var(--space-4);
+  background-color: var(--color-bg);
+  padding: var(--space-2);
+  aspect-ratio: 2 / 3;
 }
 
 .card__img-wrap img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--radius-md);
   transition: transform 0.4s ease;
 }
@@ -364,6 +367,9 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: var(--color-bg);
+  margin: var(--space-2);
+  border-radius: var(--radius-md);
 }
 
 .card__title {
