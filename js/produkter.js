@@ -183,7 +183,7 @@ function openProductModal(product) {
   const modalAddBtn = document.getElementById('modal-add-btn');
   if (modalAddBtn) {
     modalAddBtn.onclick = () => {
-      const hasColors = product.colors && product.colors.length > 0;
+      const hasColors = colorList.length > 0;
       const hasOptions = product.options && product.options.length > 0;
 
       if (hasColors && !selectedColor) {
