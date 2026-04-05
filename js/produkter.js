@@ -183,6 +183,29 @@ function openProductModal(product) {
   const modalAddBtn = document.getElementById('modal-add-btn');
   if (modalAddBtn) {
     modalAddBtn.onclick = () => {
+      const hasColors = product.colors && product.colors.length > 0;
+      const hasOptions = product.options && product.options.length > 0;
+
+      if (hasColors && !selectedColor) {
+        colorLabel.textContent = '⚠ Vælg venligst en farve';
+        colorLabel.style.color = 'var(--color-primary)';
+        swatchWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      if (hasOptions) {
+        for (const opt of product.options) {
+          if (!selectedOptions[opt.label]) {
+            const lbl = document.getElementById('option-label-' + opt.label);
+            if (lbl) {
+              lbl.textContent = '⚠ Vælg venligst ' + opt.label.toLowerCase();
+              lbl.style.color = 'var(--color-primary)';
+            }
+            return;
+          }
+        }
+      }
+
       addToCart(product, selectedColor, selectedOptions);
       closeProductModal();
     };
