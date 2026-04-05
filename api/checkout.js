@@ -19,7 +19,8 @@ module.exports = async (req, res) => {
   params.append('success_url', `${origin}/tak.html`);
   params.append('cancel_url', `${origin}/produkter.html`);
   params.append('locale', 'da');
-  params.append('automatic_payment_methods[enabled]', 'true');
+  params.append('payment_method_types[0]', 'card');
+  params.append('payment_method_types[1]', 'mobilepay');
   params.append('shipping_address_collection[allowed_countries][0]', 'DK');
   params.append('phone_number_collection[enabled]', 'true');
 
