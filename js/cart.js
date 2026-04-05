@@ -90,10 +90,20 @@ function renderCartItems() {
     </div>
   `).join('');
 
-  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const subtotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+  const shipping = 49;
+  const total = subtotal + shipping;
 
   footer.innerHTML = `
     <div class="cart-total">
+      <span>Subtotal</span>
+      <span>${subtotal} kr.</span>
+    </div>
+    <div class="cart-total" style="margin-top:var(--space-2);">
+      <span>📦 DAO forsendelse</span>
+      <span>${shipping} kr.</span>
+    </div>
+    <div class="cart-total cart-total--grand" style="margin-top:var(--space-2);font-weight:700;font-size:1.05em;">
       <span>Total</span>
       <span>${total} kr.</span>
     </div>
@@ -101,7 +111,6 @@ function renderCartItems() {
       Gå til betaling →
     </button>
     <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
-    <p class="cart-checkout__hint" style="margin-top:var(--space-1);">📦 Levering med DAO i hele Danmark</p>
   `;
 }
 
