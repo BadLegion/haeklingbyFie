@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://haeklingby-fie.vercel.app/sitemap.xml
