@@ -117,15 +117,17 @@ async function proceedToCheckout() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: cart }),
     });
-    const data = await res.json();
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } catch { data = {}; }
     if (data.url) {
       window.location.href = data.url;
     } else {
-      alert('Noget gik galt. Prøv igen.');
+      alert('Fejl ' + res.status + ': ' + (data.error || text.slice(0, 120)));
       if (btn) { btn.disabled = false; btn.textContent = 'Gå til betaling →'; }
     }
   } catch (e) {
-    alert('Noget gik galt. Prøv igen.');
+    alert('Netværksfejl: ' + e.message);
     if (btn) { btn.disabled = false; btn.textContent = 'Gå til betaling →'; }
   }
 }
