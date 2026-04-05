@@ -97,70 +97,7 @@ function renderCartItems() {
       <span>Total</span>
       <span>${total} kr.</span>
     </div>
-    <button class="btn btn--primary btn--lg cart-checkout__btn" onclick="showDeliveryForm()">
-      Fortsæt til levering →
-    </button>
-    <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
-  `;
-}
-
-/* ── Trin 2: Vis leveringsadresse-formular ──────────────────── */
-function showDeliveryForm() {
-  const wrap   = document.getElementById('cart-items');
-  const footer = document.getElementById('cart-footer');
-  if (!wrap) return;
-
-  const cart  = getCart();
-  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-
-  wrap.innerHTML = `
-    <div class="cart-delivery">
-      <button class="cart-delivery__back" onclick="renderCartItems()" aria-label="Tilbage til kurv">
-        ← Tilbage
-      </button>
-      <h3 class="cart-delivery__title">Leveringsadresse</h3>
-
-      <div class="cart-field">
-        <label class="cart-field__label" for="del-name">Fulde navn <span class="required">*</span></label>
-        <input class="cart-field__input" id="del-name" type="text" placeholder="Fornavn Efternavn" autocomplete="name">
-      </div>
-
-      <div class="cart-field">
-        <label class="cart-field__label" for="del-addr">Vejnavn og nummer <span class="required">*</span></label>
-        <input class="cart-field__input" id="del-addr" type="text" placeholder="Eksempelvej 12, 2. tv." autocomplete="street-address">
-      </div>
-
-      <div class="cart-field-row">
-        <div class="cart-field">
-          <label class="cart-field__label" for="del-zip">Postnummer <span class="required">*</span></label>
-          <input class="cart-field__input" id="del-zip" type="text" placeholder="1234" maxlength="4" autocomplete="postal-code">
-        </div>
-        <div class="cart-field">
-          <label class="cart-field__label" for="del-city">By <span class="required">*</span></label>
-          <input class="cart-field__input" id="del-city" type="text" placeholder="København" autocomplete="address-level2">
-        </div>
-      </div>
-
-      <div class="cart-field">
-        <label class="cart-field__label" for="del-phone">Telefon <span class="required">*</span></label>
-        <input class="cart-field__input" id="del-phone" type="tel" placeholder="12 34 56 78" autocomplete="tel">
-      </div>
-
-      <div class="cart-field">
-        <label class="cart-field__label" for="del-email">E-mail <span class="required">*</span></label>
-        <input class="cart-field__input" id="del-email" type="email" placeholder="din@email.dk" autocomplete="email">
-      </div>
-
-      <p id="cart-delivery-error" class="cart-delivery__error" style="display:none;"></p>
-    </div>
-  `;
-
-  footer.innerHTML = `
-    <div class="cart-total">
-      <span>Total</span>
-      <span>${total} kr.</span>
-    </div>
-    <button class="btn btn--primary btn--lg cart-checkout__btn" onclick="proceedToStripe()">
+    <button class="btn btn--primary btn--lg cart-checkout__btn" id="checkout-btn" onclick="proceedToCheckout()">
       Gå til betaling →
     </button>
     <p class="cart-checkout__hint">🔒 Sikker betaling via Stripe</p>
@@ -168,64 +105,29 @@ function showDeliveryForm() {
   `;
 }
 
-/* ── Trin 3: Valider adresse og åbn Stripe ──────────────────── */
-function proceedToStripe() {
-  const name  = document.getElementById('del-name')?.value.trim();
-  const addr  = document.getElementById('del-addr')?.value.trim();
-  const zip   = document.getElementById('del-zip')?.value.trim();
-  const city  = document.getElementById('del-city')?.value.trim();
-  const phone = document.getElementById('del-phone')?.value.trim();
-  const email = document.getElementById('del-email')?.value.trim();
-  const err   = document.getElementById('cart-delivery-error');
-
-  if (!name || !addr || !zip || !city || !phone || !email) {
-    err.textContent = 'Udfyld venligst alle felter markeret med *.';
-    err.style.display = 'block';
-    return;
-  }
-  if (!/^\d{4}$/.test(zip)) {
-    err.textContent = 'Postnummer skal bestå af 4 cifre.';
-    err.style.display = 'block';
-    return;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    err.textContent = 'Indtast venligst en gyldig e-mailadresse.';
-    err.style.display = 'block';
-    return;
-  }
-  err.style.display = 'none';
+/* ── Trin 2: Kald API og redirect til Stripe Checkout ───────── */
+async function proceedToCheckout() {
+  const btn = document.getElementById('checkout-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Vent...'; }
 
   const cart = getCart();
-  const orderLines = cart.map(i => {
-    let detail = i.color ? ' (' + i.color : '';
-    if (i.options && Object.keys(i.options).length > 0) {
-      const opts = Object.entries(i.options).map(([k, v]) => k + ': ' + v).join(', ');
-      detail += (detail ? ', ' : ' (') + opts;
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: cart }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert('Noget gik galt. Prøv igen.');
+      if (btn) { btn.disabled = false; btn.textContent = 'Gå til betaling →'; }
     }
-    if (detail) detail += ')';
-    return `${i.qty}x ${i.title}${detail}`;
-  }).join(', ');
-
-  const ref = [
-    'Ordre: ' + orderLines,
-    'Navn: '  + name,
-    'Adresse: ' + addr + ', ' + zip + ' ' + city,
-    'Tlf: '   + phone,
-    'Email: ' + email
-  ].join(' | ');
-
-  // STRIPE PAYMENT LINK — indsæt dit link her når du har oprettet det i Stripe Dashboard
-  const STRIPE_LINK = 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER';
-
-  if (STRIPE_LINK === 'INDSÆT_DIT_STRIPE_PAYMENT_LINK_HER') {
-    alert('Stripe Payment Link er endnu ikke opsat — se vejledningen i js/cart.js.');
-    return;
+  } catch (e) {
+    alert('Noget gik galt. Prøv igen.');
+    if (btn) { btn.disabled = false; btn.textContent = 'Gå til betaling →'; }
   }
-
-  const checkoutUrl = STRIPE_LINK + '?client_reference_id=' + encodeURIComponent(ref)
-    + '&prefilled_email=' + encodeURIComponent(email);
-
-  window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
 }
 
 function openCart() {

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tak for din ordre — HæklingByFie</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .tak {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-16) var(--space-6);
+    }
+    .tak__icon { font-size: 3rem; margin-bottom: var(--space-6); }
+    .tak__title { font-size: var(--text-3xl); margin-bottom: var(--space-4); }
+    .tak__text { color: var(--color-text-light); max-width: 480px; margin-bottom: var(--space-8); line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Hækling<span>ByFie</span></a>
+      <nav class="main-nav" aria-label="Primær navigation">
+        <a href="index.html">Forside</a>
+        <a href="produkter.html">Produkter</a>
+        <a href="specialbestilling.html">Specialbestilling</a>
+        <a href="om-mig.html">Om mig</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="tak">
+      <div class="tak__icon">🤍</div>
+      <h1 class="tak__title">Tak for din ordre!</h1>
+      <p class="tak__text">
+        Din betaling er gennemført. Du modtager snart en bekræftelse på e-mail.<br><br>
+        Jeg pakker din ordre med omhu og glæder mig til at sende den afsted til dig.
+      </p>
+      <a href="produkter.html" class="btn btn--primary">Se flere produkter</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-copy">© 2025 HæklingByFie. Alle rettigheder forbeholdes.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/cart.js"></script>
+</body>
+</html>
