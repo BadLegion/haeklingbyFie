@@ -17,9 +17,9 @@ const PRODUCTS = [
     id: 5,
     title: "Sprutte Bamse",
     desc: "Søde, håndlavede sprutte bamser hæklet i bomuld med håndbroderede øjne, der både giver et sødt udtryk og ekstra sikkerhed for selv de allermindste.",
-    category: "bamser",
+    category: "sprutte_bamse",
     price: 100,
-    image: "images/products/sprutte-bamse.jpg", // BILLEDE: tilføj foto i images/products/
+    image: "images/products/sprutte-bamse.jpg",
     stripeLink: "#",
     colors: [
       { name: "Lyserød", hex: "#F5C6C2" },
@@ -62,10 +62,10 @@ const YARN_COLORS = [
 
 const CATEGORY_LABELS = {
   bamser:        "Bamser",
+  sprutte_bamse: "Sprutte Bamse",
   toej:          "Tøj",
   tilbehoer:     "Accessories",
   baby:          "Baby",
-
 };
 
 function formatCategory(cat) {
