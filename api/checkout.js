@@ -20,7 +20,6 @@ module.exports = async (req, res) => {
   params.append('cancel_url', `${origin}/produkter.html`);
   params.append('locale', 'da');
   params.append('payment_method_types[0]', 'card');
-  params.append('payment_method_types[1]', 'mobilepay');
   params.append('shipping_address_collection[allowed_countries][0]', 'DK');
   params.append('shipping_options[0][shipping_rate]', 'shr_1TKkVqAjtxfNrBflKwF6qwX0');
   params.append('phone_number_collection[enabled]', 'true');
