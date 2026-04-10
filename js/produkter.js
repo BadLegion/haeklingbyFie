@@ -7,7 +7,7 @@ const PRODUCTS = [
   {
     id: 3,
     title: "Brille Etui",
-    desc: "Håndlavede brille etui lavet i 100 % bomuld og afsluttet med to fine træ perler for et sødt og naturligt finish.",
+    desc: "Håndlavede Brille Etui, hæklet i 100 % bomuld og afsluttet med to træ perler i enden for et fint og naturligt finish.<br><br>Perfekte til opbevaring af briller eller solbriller, og passer perfekt til at putte i tasken, når du skal på farten.",
     category: "tilbehoer",
     price: 120,
     image: "images/products/clutch-pung.jpg",
@@ -16,17 +16,26 @@ const PRODUCTS = [
   {
     id: 5,
     title: "Sprutte Bamse",
-    desc: "Søde, håndlavede sprutte bamser hæklet i bomuld med håndbroderede øjne, der både giver et sødt udtryk og ekstra sikkerhed for selv de allermindste.",
+    desc: "Håndlavede sprutte bamse, hæklet i 100 % bomuld, hvilket gør den både behagelig at kramme og skøn at holde om. De fine, håndbroderede øjne giver hver sprutte sit helt eget udtryk og masser af personlighed.<br><br>Som en ekstra fin detalje kan du tilvælge en lille sløjfe – perfekt til at gøre din sprutte helt unik.<br><br>En charmerende lille ven, der spreder smil, tryghed og hygge – både som gave eller som en særlig lille forkælelse til din egen lille guldklump.",
     category: "bamser",
     price: 100,
     image: "images/products/sprutte-bamse.jpg",
     stripeLink: "#",
     colors: [
-      { name: "Lyserød", hex: "#F5C6C2" },
-      { name: "Blå",     hex: "#A8CCDC" },
-      { name: "Grøn",    hex: "#A8C5A0" },
-      { name: "Lilla",   hex: "#C9B0D8" },
-      { name: "Gul",     hex: "#F0E098" }
+      { name: "Lyserød",  hex: "#F5C6C2" },
+      { name: "Lyselilla",hex: "#C9B0D8" },
+      { name: "Lysegul",  hex: "#F0E098" },
+      { name: "Lyseblå",  hex: "#A8CCDC" },
+      { name: "Lysegrøn", hex: "#A8C5A0" },
+      { name: "Brun",     hex: "#8B6347" },
+      { name: "Beige",    hex: "#D9C4A8" }
+    ],
+    options: [
+      {
+        label: "Sløjfe",
+        displayLabel: "Sløjfe (valgfrit)",
+        choices: ["Ingen", "Med sløjfe"]
+      }
     ]
   },
   {
@@ -40,7 +49,7 @@ const PRODUCTS = [
     colors: [
       { name: "Lyserød / Pink",      hex1: "#F5C6C2", hex2: "#D63F7A" },
       { name: "Lyseblå / Mørkeblå",  hex1: "#A8CCDC", hex2: "#2F6FA6" },
-      { name: "Brun / Beige",        hex1: "#8B6347", hex2: "#D9C4A8" }
+      { name: "Brun / Beige",        hex1: "#D9C4A8", hex2: "#8B6347" }
     ],
     options: [
       { label: "Træring", choices: ["Elefant", "Kanin", "Bjørn"] }
@@ -137,6 +146,8 @@ function openProductModal(product) {
 
   let selectedColor = '';
   let selectedOptions = {};
+  const basePrice = product.price;
+  let selectedBowColor = '';
 
   swatchWrap.querySelectorAll('.color-swatch').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -157,9 +168,10 @@ function openProductModal(product) {
         ).join('');
 
         return `<div class="modal-option-group">
-          <p class="modal-option-heading">${opt.label}</p>
+          <p class="modal-option-heading">${opt.displayLabel || opt.label}</p>
           <div class="modal-option-buttons" data-option="${opt.label}">${buttons}</div>
           <p class="modal-option-label" id="option-label-${opt.label}">Ingen valgt endnu</p>
+          ${opt.desc ? `<p class="modal-option-desc">${opt.desc}</p>` : ''}
         </div>`;
       }).join('');
 
@@ -173,6 +185,45 @@ function openProductModal(product) {
           if (lbl) lbl.textContent = 'Valgt: ' + btn.dataset.choice;
         });
       });
+
+      // Sløjfe: vis farvevalg
+      const sloejfeOpt = product.options.find(o => o.label === 'Sløjfe');
+      if (sloejfeOpt) {
+        const bowSection = document.createElement('div');
+        bowSection.id = 'bow-color-section';
+        bowSection.style.display = 'none';
+        bowSection.innerHTML = `
+          <div class="product-modal__color-section" style="margin-top:0.5rem;">
+            <p class="product-modal__color-heading">Sløjfens farve</p>
+            <div class="product-modal__swatches" id="bow-swatches" role="group" aria-label="Vælg sløjfens farve">
+              ${colorList.map(c => `<button class="color-swatch bow-swatch" data-name="${c.name}" style="background-color:${c.hex1 || c.hex};" title="${c.name}" aria-label="${c.name}" type="button"></button>`).join('')}
+            </div>
+            <p class="product-modal__color-label" id="bow-color-label">Vælg sløjfens farve</p>
+          </div>`;
+        optionsWrap.appendChild(bowSection);
+
+        bowSection.querySelectorAll('.bow-swatch').forEach(btn => {
+          btn.addEventListener('click', () => {
+            bowSection.querySelectorAll('.bow-swatch').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedBowColor = btn.dataset.name;
+            document.getElementById('bow-color-label').textContent = 'Valgt: ' + selectedBowColor;
+          });
+        });
+
+        optionsWrap.querySelectorAll(`.option-btn[data-option="${sloejfeOpt.label}"]`).forEach(btn => {
+          btn.addEventListener('click', () => {
+            const hasBow = btn.dataset.choice !== 'Ingen';
+            bowSection.style.display = hasBow ? 'block' : 'none';
+            if (!hasBow) {
+              selectedBowColor = '';
+              bowSection.querySelectorAll('.bow-swatch').forEach(b => b.classList.remove('active'));
+              const lbl = document.getElementById('bow-color-label');
+              if (lbl) lbl.textContent = 'Vælg sløjfens farve';
+            }
+          });
+        });
+      }
     } else {
       optionsWrap.innerHTML = '';
     }
@@ -202,6 +253,17 @@ function openProductModal(product) {
             }
             return;
           }
+        }
+        // Valider sløjfefarve hvis sløjfe er valgt
+        const sloejfeOpt = product.options.find(o => o.label === 'Sløjfe');
+        if (sloejfeOpt && selectedOptions[sloejfeOpt.label] !== 'Ingen' && !selectedBowColor) {
+          const lbl = document.getElementById('bow-color-label');
+          if (lbl) {
+            lbl.textContent = '⚠ Vælg venligst sløjfens farve';
+            lbl.style.color = 'var(--color-primary)';
+            lbl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+          return;
         }
       }
 
