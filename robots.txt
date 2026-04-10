@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tak.html
+Disallow: /tak-bestilling.html
 
 Sitemap: https://haeklingby-fie.vercel.app/sitemap.xml

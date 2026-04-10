@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://haeklingby-fie.vercel.app/</loc>
+    <lastmod>2025-04-10</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://haeklingby-fie.vercel.app/images/products/sprutte-bamse.jpg</image:loc>
+      <image:title>Sprutte Bamse — HæklingByFie</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://haeklingby-fie.vercel.app/produkter.html</loc>
+    <lastmod>2025-04-10</lastmod>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://haeklingby-fie.vercel.app/images/products/sprutte-bamse.jpg</image:loc>
+      <image:title>Sprutte Bamse</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haeklingby-fie.vercel.app/images/products/rangler.jpg</image:loc>
+      <image:title>Rangler</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://haeklingby-fie.vercel.app/images/products/clutch-pung.jpg</image:loc>
+      <image:title>Brille Etui</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://haeklingby-fie.vercel.app/specialbestilling.html</loc>
+    <lastmod>2025-04-10</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://haeklingby-fie.vercel.app/om-mig.html</loc>
+    <lastmod>2025-04-10</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
