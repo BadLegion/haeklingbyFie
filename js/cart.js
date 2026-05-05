@@ -100,7 +100,7 @@ function renderCartItems() {
       <span>${subtotal} kr.</span>
     </div>
     <div class="cart-total" style="margin-top:var(--space-2);">
-      <span>📦 DAO forsendelse</span>
+      <span>DAO forsendelse</span>
       <span>${shipping} kr.</span>
     </div>
     <div class="cart-total cart-total--grand" style="margin-top:var(--space-2);font-weight:700;font-size:1.05em;">
