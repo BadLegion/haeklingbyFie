@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontakt Hækling By Fie. Skriv hvis du har spørgsmål eller ønsker til en bestilling — Fie svarer normalt inden for 1-2 hverdage.">
+  <meta name="keywords" content="kontakt Hækling By Fie, spørgsmål bestilling, hæklet specialbestilling kontakt">
+  <meta property="og:title" content="Kontakt — Hækling By Fie">
+  <meta property="og:description" content="Skriv til Fie hvis du har spørgsmål eller ønsker til en bestilling.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://haeklingby-fie.vercel.app/kontakt.html">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:site_name" content="Hækling By Fie">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://haeklingby-fie.vercel.app/kontakt.html">
+
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="741b87ad-4d25-4e06-87e5-b8c5c8860d6e" data-blockingmode="auto" type="text/javascript"></script>
+
+  <title>Kontakt — Hækling By Fie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    .kontakt {
+      padding: var(--space-12) 0 var(--space-24);
+    }
+
+    .kontakt__form {
+      max-width: 640px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .kontakt__field {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .kontakt__field label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .kontakt__field input,
+    .kontakt__field textarea {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-white);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .kontakt__field input:focus,
+    .kontakt__field textarea:focus {
+      outline: none;
+      border-color: var(--color-sage);
+      box-shadow: 0 0 0 3px rgba(90, 85, 65, 0.15);
+    }
+
+    .kontakt__field textarea {
+      resize: vertical;
+      min-height: 160px;
+      font-family: var(--font-body);
+    }
+
+    .kontakt__submit {
+      align-self: flex-start;
+      margin-top: var(--space-4);
+    }
+
+    .kontakt__status {
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      display: none;
+    }
+
+    .kontakt__status--success {
+      background-color: var(--color-rose-light);
+      color: var(--color-text);
+      border: 1px solid var(--color-rose);
+    }
+
+    .kontakt__status--error {
+      background-color: #FBE8E5;
+      color: #8C3A2E;
+      border: 1px solid #E5B4AC;
+    }
+
+    .kontakt__info {
+      max-width: 640px;
+      margin: 0 auto var(--space-8);
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-base);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" role="navigation" aria-label="Hovednavigation">
+    <div class="nav__inner container">
+      <a href="index.html" class="nav__logo" aria-label="Hækling By Fie forside">
+        <img src="logo.jpg" alt="Hækling By Fie">
+      </a>
+      <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="produkter.html">Produkter</a></li>
+        <li><a href="om-mig.html">Om mig</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      </ul>
+      <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Åbn kurv">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-label">Kontakt</span>
+        <h1 class="page-hero__title">Skriv til mig</h1>
+      </div>
+    </section>
+
+    <section class="kontakt">
+      <div class="container">
+        <p class="kontakt__info">
+          Har du spørgsmål eller ønsker til en bestilling, så send mig en besked herunder.
+          Jeg svarer normalt inden for 1-2 hverdage.
+        </p>
+
+        <form class="kontakt__form" id="kontakt-form" novalidate>
+          <div class="kontakt__field">
+            <label for="kontakt-navn">Navn *</label>
+            <input type="text" id="kontakt-navn" name="navn" required maxlength="100" autocomplete="name">
+          </div>
+
+          <div class="kontakt__field">
+            <label for="kontakt-email">E-mail *</label>
+            <input type="email" id="kontakt-email" name="email" required maxlength="200" autocomplete="email">
+          </div>
+
+          <div class="kontakt__field">
+            <label for="kontakt-emne">Emne</label>
+            <input type="text" id="kontakt-emne" name="emne" maxlength="200">
+          </div>
+
+          <div class="kontakt__field">
+            <label for="kontakt-besked">Besked *</label>
+            <textarea id="kontakt-besked" name="besked" required maxlength="5000" rows="6"></textarea>
+          </div>
+
+          <div class="kontakt__status" id="kontakt-status" role="status" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn--primary btn--lg kontakt__submit" id="kontakt-submit">
+            Send besked
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo" aria-label="Hækling By Fie forside">
+          <img src="logo.jpg" alt="Hækling By Fie">
+        </a>
+        <p class="footer__copy">&copy; 2026 Hækling By Fie</p>
+      </div>
+      <nav class="footer__links" aria-label="Sidelinks">
+        <a href="produkter.html">Produkter</a>
+        <a href="om-mig.html">Om mig</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="handelsbetingelser.html">Handelsbetingelser</a>
+        <a href="privatlivspolitik.html">Privatlivspolitik</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('kontakt-form');
+      const status = document.getElementById('kontakt-status');
+      const submit = document.getElementById('kontakt-submit');
+      if (!form) return;
+
+      function showStatus(msg, type) {
+        status.textContent = msg;
+        status.className = 'kontakt__status kontakt__status--' + type;
+        status.style.display = 'block';
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.style.display = 'none';
+        submit.disabled = true;
+        submit.textContent = 'Sender…';
+
+        const data = {
+          navn:   form.navn.value.trim(),
+          email:  form.email.value.trim(),
+          emne:   form.emne.value.trim(),
+          besked: form.besked.value.trim(),
+        };
+
+        try {
+          const res = await fetch('/api/kontakt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const result = await res.json().catch(() => ({}));
+
+          if (res.ok && result.ok) {
+            showStatus('Tak for din besked! Jeg vender tilbage hurtigst muligt.', 'success');
+            form.reset();
+          } else {
+            showStatus(result.error || 'Der opstod en fejl. Prøv venligst igen.', 'error');
+          }
+        } catch (err) {
+          showStatus('Kunne ikke sende beskeden. Tjek din internetforbindelse og prøv igen.', 'error');
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Send besked';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
