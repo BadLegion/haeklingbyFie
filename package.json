@@ -1,6 +1,10 @@
 {
   "name": "haeklingbyFie",
   "version": "1.0.0",
+  "scripts": {
+    "dev": "vercel dev",
+    "preview": "npx serve . -p 3000"
+  },
   "dependencies": {
     "nodemailer": "^6.9.14"
   }

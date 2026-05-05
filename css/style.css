@@ -4,17 +4,17 @@
 
 /* --- Design Tokens --- */
 :root {
-  /* Farver */
-  --color-bg:          #FAF8F5;
-  --color-surface:     #F2EDE6;
-  --color-surface-alt: #EDE8E0;
-  --color-sage:        #C4837C;
-  --color-sage-dark:   #A66860;
-  --color-rose:        #E0A89F;
-  --color-rose-light:  #F5E0DC;
-  --color-text:        #3A3330;
-  --color-text-muted:  #7A6F6A;
-  --color-border:      #DDD6CE;
+  /* Farver — hvid baggrund + lys oliven palette */
+  --color-bg:          #FFFFFF;  /* hvid baggrund */
+  --color-surface:     #FAFAF7;  /* meget lys (næsten hvid) */
+  --color-surface-alt: #F2F0E8;  /* lys creme */
+  --color-sage:        #8A8568;  /* lys oliven (knapper/accent) */
+  --color-sage-dark:   #6B6750;  /* lidt mørkere oliven (hover/labels) */
+  --color-rose:        #C4B088;  /* mellem beige (divider/highlights) */
+  --color-rose-light:  #E4D6BA;  /* lys beige */
+  --color-text:        #4A4530;  /* mørk oliven (tekst) */
+  --color-text-muted:  #7A7560;  /* mid oliven (dæmpet tekst) */
+  --color-border:      #E0DCC8;  /* lys beige border */
   --color-white:       #FFFFFF;
 
   /* Typografi */

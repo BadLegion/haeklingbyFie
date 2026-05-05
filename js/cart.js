@@ -65,7 +65,7 @@ function renderCartItems() {
   const cart = getCart();
 
   if (cart.length === 0) {
-    wrap.innerHTML  = '<p class="cart-empty">Din kurv er tom 🧶</p>';
+    wrap.innerHTML  = '<p class="cart-empty">Din kurv er tom</p>';
     footer.innerHTML = '';
     return;
   }

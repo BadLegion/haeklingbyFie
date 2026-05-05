@@ -45,7 +45,7 @@
     /* ---- Story section ---- */
     .story {
       padding-top: var(--space-16);
-      padding-bottom: var(--space-24);
+      padding-bottom: var(--space-8);
     }
 
     .story__grid {
@@ -53,7 +53,7 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-16);
       align-items: center;
-      margin-bottom: var(--space-24);
+      margin-bottom: var(--space-8);
     }
 
     .story__grid--reverse {
@@ -99,14 +99,14 @@
     /* ---- Values ---- */
     .values {
       background-color: var(--color-surface);
-      padding: var(--space-24) 0;
+      padding: var(--space-12) 0;
     }
 
     .values__grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: var(--space-6);
-      margin-top: var(--space-12);
+      margin-top: var(--space-8);
     }
 
     .value-card {
@@ -115,6 +115,20 @@
       border-radius: var(--radius-lg);
       padding: var(--space-6);
       text-align: center;
+    }
+
+    .value-card__check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background-color: var(--color-sage);
+      color: var(--color-white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
     }
 
     .value-card__icon {
@@ -162,7 +176,7 @@
   <nav class="nav" role="navigation" aria-label="Hovednavigation">
     <div class="nav__inner container">
       <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
-        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+        <img src="logo.jpg" alt="HæklingByFie">
       </a>
       <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -170,7 +184,6 @@
       <ul class="nav__links" role="list">
         <li><a href="index.html">Forside</a></li>
         <li><a href="produkter.html">Produkter</a></li>
-        <li><a href="specialbestilling.html">Specialbestilling</a></li>
         <li><a href="om-mig.html">Om mig</a></li>
       </ul>
       <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Åbn kurv">
@@ -194,7 +207,7 @@
     <section class="story">
       <div class="container">
 
-        <!-- Del 1: Min historie -->
+        <!-- Min historie -->
         <div class="story__grid">
           <div class="story__image">
             <img
@@ -209,52 +222,14 @@
             <h2 class="section-title">Sådan startede det hele</h2>
             <div class="divider"></div>
             <p class="story__text">
-              Hej. Mit navn er Fie, og jeg står bag HæklingByFie. Det hele startede tilbage i 2021 da jeg lærte at hækle, og siden da er min kærlighed for håndværket kun vokset.
+              Det hele startede med en simpel glæde ved garn, farver og de små øjeblikke af ro, som hækling kan give. For Fie blev det hurtigt mere end bare en hobby. Det blev en måde at skabe noget unikt, personligt og meningsfuldt. Hver maske rummer tid, omtanke og kærlighed til det håndlavede.
             </p>
             <p class="story__text">
-              I dag er hækling ikke blot en hobby — det er mit kreative frirum og mit
-              lille erhverv. Jeg nyder at lave produkter, der holder, der er smukke,
-              og som betyder noget for modtageren. Uanset om det er en bamse til en
-              nyfødt eller et unikt tilbehør til hverdagen.
-            </p>
-          </div>
-        </div>
-
-        <div class="ornament">
-          <span class="ornament__icon">🧶</span>
-        </div>
-
-        <!-- Del 2: Mit håndværk -->
-        <div class="story__grid story__grid--reverse">
-          <div class="story__image">
-            <img
-              src="images/products/658976736_2249237125884477_5858057686376329428_n.jpg"
-              alt="To boble punge i mohair"
-              loading="lazy"
-              onerror="this.style.background='#EDE8E0';"
-            >
-          </div>
-          <div class="story__content">
-            <span class="section-label">Mit håndværk</span>
-            <h2 class="section-title">Kvalitet i hver maske</h2>
-            <div class="divider"></div>
-            <p class="story__text">
-              Alle mine produkter hækles i bæredygtige og certificerede materialer,
-              primært 100% bomuld og merino-uld, som er skånsomt mod selv den mest
-              følsomme babyhud. Jeg går ikke på kompromis med kvaliteten.
+              Med ønsket om at dele den glæde med andre opstod Hækling by Fie. En lille butik, hvor intet er masseproduceret, og hvor hvert design bliver lavet på bestilling, specielt til dig. Her handler det ikke bare om produkter, men om at skabe noget, der passer præcis til den person, der skal bruge det.
             </p>
             <p class="story__text">
-              Hvert produkt er unikt. Selv om to bamser ligner hinanden, er de aldrig
-              identiske, og det er netop det smukke ved hækling. Du får noget, som
-              ingen andre har.
+              Hækling by Fie er for dem, der sætter pris på det personlige, det kreative og det unikke. For bag hvert eneste stykke hækling gemmer der sig en historie, og måske bliver din den næste.
             </p>
-            <p class="story__text">
-              Specialbestillinger er hjertet i min virksomhed. Jeg elsker at få en
-              idé fra en kunde og gøre den til virkelighed, én maske ad gangen.
-            </p>
-            <a href="specialbestilling.html" class="btn btn--outline mt-md">
-              Lav en specialbestilling
-            </a>
           </div>
         </div>
 
@@ -271,41 +246,20 @@
         </div>
         <div class="values__grid">
           <div class="value-card">
-            <div class="value-card__icon">🌿</div>
-            <h3 class="value-card__title">Bæredygtighed</h3>
-            <p class="value-card__text">Jeg bruger certificerede, naturlige materialer og bestiller kun det, jeg skal bruge — ingen spild.</p>
-          </div>
-          <div class="value-card">
-            <div class="value-card__icon">🤍</div>
+            <span class="value-card__check" aria-hidden="true">✓</span>
             <h3 class="value-card__title">Kærlighed til håndværket</h3>
             <p class="value-card__text">Hvert produkt laves med ro, nærvær og opmærksomhed. Ingen maskiner, ingen masseproduktion.</p>
           </div>
           <div class="value-card">
-            <div class="value-card__icon">✨</div>
+            <span class="value-card__check" aria-hidden="true">✓</span>
             <h3 class="value-card__title">Unikt</h3>
             <p class="value-card__text">Alle produkter er ét-af-sin-slags. Du får noget særligt, der ikke kan købes i en butik.</p>
           </div>
           <div class="value-card">
-            <div class="value-card__icon">💬</div>
+            <span class="value-card__check" aria-hidden="true">✓</span>
             <h3 class="value-card__title">Nærhed til kunden</h3>
-            <p class="value-card__text">Jeg er altid tilgængelig for spørgsmål og elsker at samarbejde om specialønsker.</p>
+            <p class="value-card__text">Jeg er altid tilgængelig for spørgsmål og forsøger altid at yde en god og hurtig service.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="about-cta">
-      <div class="container container--narrow">
-        <span class="section-label">Klar til at bestille?</span>
-        <h2 class="section-title">Lad os skabe noget smukt sammen</h2>
-        <p class="section-intro">
-          Kig i shoppen, eller send mig en besked om din idé.
-          Jeg glæder mig til at høre fra dig!
-        </p>
-        <div style="display:flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-          <a href="produkter.html" class="btn btn--primary btn--lg">Se produkter</a>
-          <a href="specialbestilling.html" class="btn btn--outline btn--lg">Kontakt mig</a>
         </div>
       </div>
     </section>
@@ -316,13 +270,13 @@
   <footer class="footer" role="contentinfo">
     <div class="footer__inner container">
       <div class="footer__brand">
-        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
-        <p class="footer__tagline">Lavet med kærlighed — én maske ad gangen.</p>
+        <a href="index.html" class="footer__logo" aria-label="HæklingByFie forside">
+          <img src="logo.jpg" alt="HæklingByFie">
+        </a>
         <p class="footer__copy">&copy; 2026 HæklingByFie</p>
       </div>
       <nav class="footer__links" aria-label="Sidelinks">
         <a href="produkter.html">Produkter</a>
-        <a href="specialbestilling.html">Specialbestilling</a>
         <a href="om-mig.html">Om mig</a>
         <a href="handelsbetingelser.html">Handelsbetingelser</a>
         <a href="privatlivspolitik.html">Privatlivspolitik</a>

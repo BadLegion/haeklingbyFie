@@ -32,15 +32,15 @@
         "position": 1,
         "item": {
           "@type": "Product",
-          "name": "Sprutte Bamse",
-          "description": "Håndlavede sprutte bamse, hæklet i 100 % bomuld med håndbroderede øjne. En charmerende lille ven til de mindste.",
-          "image": "https://haeklingby-fie.vercel.app/images/products/sprutte-bamse.jpg",
+          "name": "Rangler",
+          "description": "En sød og sanselig rangle til de mindste. Håndlavet i blød bomuld med træperler, træring og en fin træfigur.",
+          "image": "https://haeklingby-fie.vercel.app/images/products/rangler.jpg",
           "brand": { "@type": "Brand", "name": "HæklingByFie" },
-          "material": "100% bomuld",
+          "material": "100% bomuld, træperler",
           "offers": {
             "@type": "Offer",
             "priceCurrency": "DKK",
-            "price": "100",
+            "price": "140",
             "availability": "https://schema.org/InStock",
             "url": "https://haeklingby-fie.vercel.app/produkter.html"
           }
@@ -51,25 +51,6 @@
         "position": 2,
         "item": {
           "@type": "Product",
-          "name": "Rangler",
-          "description": "En sød og sanselig rangle til de mindste. Håndlavet i blød bomuld med træperler, træring og en fin træfigur.",
-          "image": "https://haeklingby-fie.vercel.app/images/products/rangler.jpg",
-          "brand": { "@type": "Brand", "name": "HæklingByFie" },
-          "material": "100% bomuld, træperler",
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "DKK",
-            "price": "175",
-            "availability": "https://schema.org/InStock",
-            "url": "https://haeklingby-fie.vercel.app/produkter.html"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Product",
           "name": "Brille Etui",
           "description": "Håndlavet brille etui, hæklet i 100 % bomuld og afsluttet med to træ perler for et fint og naturligt finish.",
           "image": "https://haeklingby-fie.vercel.app/images/products/clutch-pung.jpg",
@@ -78,7 +59,7 @@
           "offers": {
             "@type": "Offer",
             "priceCurrency": "DKK",
-            "price": "120",
+            "price": "100",
             "availability": "https://schema.org/InStock",
             "url": "https://haeklingby-fie.vercel.app/produkter.html"
           }
@@ -136,7 +117,7 @@
   <nav class="nav" role="navigation" aria-label="Hovednavigation">
     <div class="nav__inner container">
       <a href="index.html" class="nav__logo" aria-label="HæklingByFie forside">
-        <span class="nav__logo-text">Hækling<span>ByFie</span></span>
+        <img src="logo.jpg" alt="HæklingByFie">
       </a>
       <button class="nav__toggle" aria-label="Åbn menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -144,7 +125,6 @@
       <ul class="nav__links" role="list">
         <li><a href="index.html">Forside</a></li>
         <li><a href="produkter.html">Produkter</a></li>
-        <li><a href="specialbestilling.html">Specialbestilling</a></li>
         <li><a href="om-mig.html">Om mig</a></li>
       </ul>
       <button class="cart-icon-btn" id="cart-icon-btn" aria-label="Åbn kurv">
@@ -173,7 +153,6 @@
         <div class="filter-bar" role="search" aria-label="Filtrer produkter">
           <div class="filter-bar__categories">
             <button class="filter-btn active" data-category="all">Alle</button>
-            <button class="filter-btn" data-category="bamser">Bamser</button>
             <button class="filter-btn" data-category="baby">Baby</button>
             <button class="filter-btn" data-category="tilbehoer">Accessories</button>
           </div>
@@ -202,33 +181,19 @@
       </div>
     </section>
 
-    <!-- SPECIALBESTILLING OPFORDRING -->
-    <section class="py-section" aria-label="Mangler du noget?">
-      <div class="container container--narrow text-center">
-        <span class="section-label">Finder du ikke det du søger?</span>
-        <h2 class="section-title">Lav en specialbestilling</h2>
-        <div class="divider"></div>
-        <p class="section-intro">
-          Jeg hækler efter dine ønsker — vælg farver, størrelse og design selv.
-          Kontakt mig med din idé, og vi finder en løsning sammen.
-        </p>
-        <a href="specialbestilling.html" class="btn btn--primary btn--lg">Send en forespørgsel</a>
-      </div>
-    </section>
-
   </main>
 
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner container">
       <div class="footer__brand">
-        <span class="footer__logo-text">Hækling<span>ByFie</span></span>
-        <p class="footer__tagline">Lavet med kærlighed — én maske ad gangen.</p>
+        <a href="index.html" class="footer__logo" aria-label="HæklingByFie forside">
+          <img src="logo.jpg" alt="HæklingByFie">
+        </a>
         <p class="footer__copy">&copy; 2026 HæklingByFie</p>
       </div>
       <nav class="footer__links" aria-label="Sidelinks">
         <a href="produkter.html">Produkter</a>
-        <a href="specialbestilling.html">Specialbestilling</a>
         <a href="om-mig.html">Om mig</a>
         <a href="handelsbetingelser.html">Handelsbetingelser</a>
         <a href="privatlivspolitik.html">Privatlivspolitik</a>

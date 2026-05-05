@@ -7,49 +7,24 @@ const PRODUCTS = [
   {
     id: 3,
     title: "Brille Etui",
-    desc: "Håndlavede Brille Etui, hæklet i 100 % bomuld og afsluttet med to træ perler i enden for et fint og naturligt finish.<br><br>Perfekte til opbevaring af briller eller solbriller, og passer perfekt til at putte i tasken, når du skal på farten.",
+    desc: "Håndlavede Brille Etui, hæklede i bomuld og afsluttet med to træ perler i enden for et fint og naturligt finish.<br><br>Perfekte til opbevaring af briller eller solbriller, og passer perfekt ned i tasken når du skal på farten.",
     category: "tilbehoer",
-    price: 120,
+    price: 100,
     image: "images/products/clutch-pung.jpg",
     stripeLink: "#"
-  },
-  {
-    id: 5,
-    title: "Sprutte Bamse",
-    desc: "Håndlavede sprutte bamse, hæklet i 100 % bomuld, hvilket gør den både behagelig at kramme og skøn at holde om. De fine, håndbroderede øjne giver hver sprutte sit helt eget udtryk og masser af personlighed.<br><br>Som en ekstra fin detalje kan du tilvælge en lille sløjfe – perfekt til at gøre din sprutte helt unik.<br><br>En charmerende lille ven, der spreder smil, tryghed og hygge – både som gave eller som en særlig lille forkælelse til din egen lille guldklump.",
-    category: "bamser",
-    price: 100,
-    image: "images/products/sprutte-bamse.jpg",
-    stripeLink: "#",
-    colors: [
-      { name: "Lyserød",  hex: "#F5C6C2" },
-      { name: "Lyselilla",hex: "#C9B0D8" },
-      { name: "Lysegul",  hex: "#F0E098" },
-      { name: "Lyseblå",  hex: "#A8CCDC" },
-      { name: "Lysegrøn", hex: "#A8C5A0" },
-      { name: "Brun",     hex: "#8B6347" },
-      { name: "Beige",    hex: "#D9C4A8" }
-    ],
-    options: [
-      {
-        label: "Sløjfe",
-        displayLabel: "Sløjfe (valgfrit)",
-        choices: ["Ingen", "Med sløjfe"]
-      }
-    ]
   },
   {
     id: 4,
     title: "Rangler",
     desc: "En sød og sanselig rangle til de mindste.<br><br>Håndlavet i blød bomuld med træperler, træring og en fin træfigur. Den blide raslelyd og de naturlige materialer stimulerer små, nysgerrige hænder og sanser.<br><br>Perfekt som gave — eller som en kærlig lille forkælelse.",
     category: "baby",
-    price: 175,
+    price: 140,
     image: "images/products/rangler.jpg",
     stripeLink: "#",
     colors: [
       { name: "Lyserød / Pink",      hex1: "#F5C6C2", hex2: "#D63F7A" },
       { name: "Lyseblå / Mørkeblå",  hex1: "#A8CCDC", hex2: "#2F6FA6" },
-      { name: "Brun / Beige",        hex1: "#D9C4A8", hex2: "#8B6347" }
+      { name: "Beige / Brun",        hex1: "#D9C4A8", hex2: "#8B6347" }
     ],
     options: [
       { label: "Træring", choices: ["Elefant", "Kanin", "Bjørn"] }
@@ -70,7 +45,6 @@ const YARN_COLORS = [
 ];
 
 const CATEGORY_LABELS = {
-  bamser:        "Bamser",
   toej:          "Tøj",
   tilbehoer:     "Accessories",
   baby:          "Baby",
